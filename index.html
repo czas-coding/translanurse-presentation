@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TranslaNurse v2.0 — Interactive Pitch Deck</title>
+  <title>TranslaNurse (2026 Edition) — Interactive Pitch Deck</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <script>
@@ -16,18 +16,20 @@
       theme: {
         extend: {
           colors: {
+            navyDeep: '#041C2C',
             tealDeep: '#073B40',
             tealMid: '#0B4F56',
             seafoam: '#48B5C4',
             seafoamLight: '#66CED6',
+            sage: '#72B6A3',
             coral: '#F4979C',
             coralDark: '#E06D75',
             alabaster: '#F4F8F8',
             slateDark: '#052629'
           },
           fontFamily: {
-            display: ['Plus Jakarta Sans', 'Syne', 'sans-serif'],
-            syne: ['Syne', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Fraunces', 'serif'],
             sans: ['Inter', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace']
           }
@@ -69,7 +71,7 @@
     }
 
     /* Disable strict snap on smaller mobile heights so content never clips */
-    @media (max-width: 1024px), (max-height: 740px) {
+    @media (max-width: 1024px), (max-height: 760px) {
       .deck-container {
         scroll-snap-type: y proximity;
       }
@@ -89,7 +91,7 @@
       height: 100vh;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.13;
+      opacity: 0.12;
       mix-blend-mode: overlay;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
@@ -112,22 +114,22 @@
     /* Aura Mesh Gradients */
     .aura-dark {
       background:
-        radial-gradient(circle at 85% 18%, rgba(244, 151, 156, 0.22) 0%, transparent 42%),
-        radial-gradient(circle at 12% 82%, rgba(72, 181, 196, 0.24) 0%, transparent 46%),
+        radial-gradient(circle at 85% 18%, rgba(244, 151, 156, 0.20) 0%, transparent 42%),
+        radial-gradient(circle at 12% 82%, rgba(72, 181, 196, 0.22) 0%, transparent 46%),
         #052629;
     }
 
     .aura-light {
       background:
-        radial-gradient(circle at 88% 15%, rgba(244, 151, 156, 0.28) 0%, transparent 42%),
-        radial-gradient(circle at 10% 85%, rgba(72, 181, 196, 0.24) 0%, transparent 45%),
+        radial-gradient(circle at 88% 15%, rgba(244, 151, 156, 0.24) 0%, transparent 42%),
+        radial-gradient(circle at 10% 85%, rgba(72, 181, 196, 0.22) 0%, transparent 45%),
         #F4F8F8;
     }
 
-    /* Floating Cross Animation */
+    /* Floating Logo Animation */
     @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(4deg); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
     }
     .float-slow {
       animation: floatSlow 6s ease-in-out infinite;
@@ -145,12 +147,42 @@
       border-radius: 3px;
     }
 
-    /* Active Square Styling */
+    /* Active 8-Square Styling (Matches 2026 Screenshot Navy Card) */
+    .info-square-btn {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
     .info-square-btn.active {
-      border-color: #0B4F56;
-      background-color: #E3F3F5;
-      box-shadow: 0 10px 25px -5px rgba(11, 79, 86, 0.2);
+      background-color: #07223B !important;
+      border-color: #07223B !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 12px 24px -6px rgba(7, 34, 59, 0.35);
       transform: translateY(-2px);
+    }
+    .info-square-btn.active .sq-title {
+      color: #FFFFFF !important;
+    }
+    .info-square-btn.active .sq-num {
+      color: #66CED6 !important;
+    }
+    .info-square-btn.active .sq-badge {
+      background-color: rgba(255, 255, 255, 0.12) !important;
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Scenario Chip Active State */
+    .scenario-chip.active {
+      background-color: #073B40;
+      color: #FFFFFF;
+      border-color: #073B40;
+    }
+
+    /* Dialect Pill Active State */
+    .dialect-pill.active {
+      background-color: #F4979C;
+      color: #052629;
+      border-color: #F4979C;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -159,12 +191,12 @@
   <!-- Fixed Grainy Film Texture Overlay -->
   <div class="grain-overlay" aria-hidden="true"></div>
 
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-slateDark/80 border-b border-seafoam/20 transition-all duration-300">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-slateDark/85 border-b border-seafoam/20 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
       <!-- Brand Logo & Title -->
-      <a href="#slide-1" class="flex items-center gap-3 group">
+      <button onclick="scrollToSlide(1)" class="flex items-center gap-3 group text-left">
         <div class="w-10 h-10 rounded-xl bg-white p-1.5 shadow-md flex items-center justify-center group-hover:scale-105 transition-transform">
-          <!-- Mini SVG TranslaNurse Emblem -->
           <svg viewBox="0 0 100 100" class="w-full h-full">
             <defs>
               <linearGradient id="navRing" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -176,19 +208,16 @@
             <path d="M 75 20 A 42 42 0 1 0 75 82" fill="none" stroke="url(#navRing)" stroke-width="5" stroke-linecap="round"/>
             <circle cx="75" cy="20" r="4" fill="#F4979C"/>
             <circle cx="75" cy="82" r="4" fill="#48B5C4"/>
-            <!-- Coral Bubble -->
             <ellipse cx="52" cy="44" rx="18" ry="14" fill="#F4979C"/>
             <polygon points="56,56 64,61 60,52" fill="#F4979C"/>
             <circle cx="46" cy="44" r="2.2" fill="#FFF"/>
             <circle cx="52" cy="44" r="2.2" fill="#FFF"/>
             <circle cx="58" cy="44" r="2.2" fill="#FFF"/>
-            <!-- Teal Bubble -->
             <ellipse cx="38" cy="58" rx="18" ry="14" fill="#66CED6"/>
             <polygon points="42,70 49,76 47,67" fill="#66CED6"/>
             <circle cx="32" cy="58" r="2.2" fill="#FFF"/>
             <circle cx="38" cy="58" r="2.2" fill="#FFF"/>
             <circle cx="44" cy="58" r="2.2" fill="#FFF"/>
-            <!-- Medical Cross -->
             <path d="M72 26 H79 V33 H86 V40 H79 V47 H72 V40 H65 V33 H72 Z" fill="#073B40"/>
           </svg>
         </div>
@@ -196,66 +225,109 @@
           <div class="font-display font-extrabold text-lg tracking-tight leading-none">
             <span class="text-[#72B6A3]">transla</span><span class="text-seafoam">nurse</span>
           </div>
-          <span class="font-mono text-[10px] tracking-widest uppercase text-seafoamLight/80 block mt-0.5">v2.0 Pitch Deck</span>
+          <span class="font-mono text-[10px] tracking-widest uppercase text-seafoamLight/80 block mt-0.5">2026 Interactive Deck</span>
         </div>
-      </a>
+      </button>
 
       <!-- Center Slide Indicator Pill -->
       <div class="hidden md:flex items-center gap-3 bg-tealDeep/90 border border-seafoam/30 px-4 py-1.5 rounded-full">
         <span id="nav-slide-Counter" class="font-mono text-xs font-bold text-coral">01 / 08</span>
         <span class="text-seafoam/40">•</span>
-        <span id="nav-slide-title" class="font-mono text-xs text-alabaster/90 uppercase tracking-wider">The Hook</span>
+        <span id="nav-slide-title" class="font-mono text-xs text-alabaster/90 uppercase tracking-wider">Welcome &amp; Mission</span>
       </div>
 
-      <!-- Right Action Buttons -->
-      <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <button onclick="toggleHotkeyModal()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/15 hover:bg-red-500/25 border border-red-400/40 text-red-200 font-mono text-[11px] font-semibold transition">
+          <span>🚨 NCR Hotlines</span>
+        </button>
         <button onclick="prevSlide()" title="Previous Slide (Up Arrow)" class="w-9 h-9 rounded-full bg-tealDeep/80 hover:bg-tealMid border border-seafoam/30 text-alabaster flex items-center justify-center transition">
           <i class="fa-solid fa-chevron-up text-xs"></i>
         </button>
         <button onclick="nextSlide()" title="Next Slide (Down Arrow)" class="w-9 h-9 rounded-full bg-tealDeep/80 hover:bg-tealMid border border-seafoam/30 text-alabaster flex items-center justify-center transition">
           <i class="fa-solid fa-chevron-down text-xs"></i>
         </button>
-        <a href="https://czas-coding.github.io/thetranslanurse/" target="_blank" rel="noopener noreferrer" class="bg-coral hover:bg-coralDark text-slateDark font-mono text-xs font-bold px-4 py-2 rounded-full transition flex items-center gap-2 shadow-lg shadow-coral/20">
+        <a href="https://czas-coding.github.io/translanurse/" target="_blank" rel="noopener noreferrer" class="bg-coral hover:bg-coralDark text-slateDark font-mono text-xs font-bold px-4 py-2 rounded-full transition flex items-center gap-2 shadow-lg shadow-coral/20">
           <span>Launch App</span>
           <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
         </a>
       </div>
     </div>
-    <!-- Progress Bar -->
+    <!-- Top Progress Bar -->
     <div class="w-full h-1 bg-slateDark">
       <div id="scroll-progress" class="h-full bg-gradient-to-r from-seafoam via-coral to-seafoamLight transition-all duration-300" style="width: 12.5%;"></div>
     </div>
   </header>
 
-  <!-- Floating Right Side Slide Dots Navigation -->
+  <!-- NCR EMERGENCY HOTLINES MODAL -->
+  <div id="ncr-modal" class="fixed inset-0 z-50 hidden bg-slateDark/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white text-slateDark rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-coral relative">
+      <button onclick="toggleHotkeyModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slateDark/10 hover:bg-slateDark/20 flex items-center justify-center text-slateDark">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 font-mono text-xs font-bold mb-3">
+        🚨 METRO MANILA (NCR) TRIAGE DESK
+      </div>
+      <h3 class="font-display font-extrabold text-2xl text-slateDark mb-2">Emergency Triage Hotlines</h3>
+      <p class="text-xs text-slateDark/70 mb-5">If a patient exhibits acute red-flag symptoms, immediately pause digital consultation and dial:</p>
+      <div class="space-y-3">
+        <div class="p-3.5 rounded-2xl bg-alabaster border border-tealDeep/15 flex items-center justify-between">
+          <div>
+            <span class="font-bold text-sm block">National Emergency Hotline</span>
+            <span class="text-xs text-slateDark/60">24/7 Police, Fire &amp; Medical Dispatch</span>
+          </div>
+          <span class="font-mono font-extrabold text-xl text-red-600">911</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-alabaster border border-tealDeep/15 flex items-center justify-between">
+          <div>
+            <span class="font-bold text-sm block">Department of Health (DOH)</span>
+            <span class="text-xs text-slateDark/60">National Telehealth &amp; Clinical Triage</span>
+          </div>
+          <span class="font-mono font-extrabold text-xl text-tealMid">1555</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-alabaster border border-tealDeep/15 flex items-center justify-between">
+          <div>
+            <span class="font-bold text-sm block">Philippine Red Cross</span>
+            <span class="text-xs text-slateDark/60">Ambulance &amp; Emergency Medical Services</span>
+          </div>
+          <span class="font-mono font-extrabold text-xl text-coralDark">143</span>
+        </div>
+      </div>
+      <button onclick="toggleHotkeyModal()" class="mt-6 w-full py-3 rounded-xl bg-tealDeep text-white font-display font-bold text-xs uppercase tracking-wider">
+        Close Directory
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING RIGHT SIDE SLIDE DOTS NAVIGATION -->
   <nav aria-label="Slide Navigation" class="fixed right-5 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-3 bg-slateDark/70 backdrop-blur-md p-2.5 rounded-full border border-seafoam/20 shadow-2xl">
     <button onclick="scrollToSlide(1)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="1">
       <span class="w-2.5 h-2.5 rounded-full bg-coral transition-all scale-125"></span>
-      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">01 // Hook</span>
+      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">01 // Welcome &amp; Mission</span>
     </button>
     <button onclick="scrollToSlide(2)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="2">
       <span class="w-2 h-2 rounded-full bg-seafoam/40 group-hover:bg-seafoam transition-all"></span>
-      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">02 // The Why</span>
+      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">02 // The Clinical Disconnect</span>
     </button>
     <button onclick="scrollToSlide(3)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="3">
       <span class="w-2 h-2 rounded-full bg-seafoam/40 group-hover:bg-seafoam transition-all"></span>
-      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">03 // v2.0 Lab Scanner</span>
+      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">03 // Multimodal Lab OCR</span>
     </button>
     <button onclick="scrollToSlide(4)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="4">
       <span class="w-2 h-2 rounded-full bg-seafoam/40 group-hover:bg-seafoam transition-all"></span>
-      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">04 // 7 Info Squares</span>
+      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">04 // 8 Clickable Info Squares</span>
     </button>
     <button onclick="scrollToSlide(5)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="5">
       <span class="w-2 h-2 rounded-full bg-seafoam/40 group-hover:bg-seafoam transition-all"></span>
-      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">05 // PH Dialect Fluency</span>
+      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">05 // 10 PH + 7 Asian Languages</span>
     </button>
     <button onclick="scrollToSlide(6)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="6">
       <span class="w-2 h-2 rounded-full bg-seafoam/40 group-hover:bg-seafoam transition-all"></span>
-      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">06 // Care Triangle</span>
+      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">06 // 5-Pillar Sourcing</span>
     </button>
     <button onclick="scrollToSlide(7)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="7">
       <span class="w-2 h-2 rounded-full bg-seafoam/40 group-hover:bg-seafoam transition-all"></span>
-      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">07 // Safety Guardrails</span>
+      <span class="absolute right-9 px-2.5 py-1 rounded bg-slateDark border border-seafoam/30 font-mono text-[11px] text-alabaster whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">07 // Zero-Med &amp; Privacy</span>
     </button>
     <button onclick="scrollToSlide(8)" class="slide-dot group relative flex items-center justify-center w-6 h-6 rounded-full transition" data-slide="8">
       <span class="w-2 h-2 rounded-full bg-seafoam/40 group-hover:bg-seafoam transition-all"></span>
@@ -263,72 +335,79 @@
     </button>
   </nav>
 
-  <!-- MAIN SCROLLING DECK CONTAINER -->
+  <!-- MAIN SCROLLING DECK CONTAINER (8 SLIDES MAX) -->
   <main id="deck-container" class="deck-container">
 
     <!-- ==========================================
-         SLIDE 01 / 08: THE HOOK (HERO SECTION)
+         SLIDE 01 / 08: WELCOME TO TRANSLANURSE (2026 HERO)
          ========================================== -->
-    <section id="slide-1" data-index="1" data-title="The Hook" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
-      <div class="max-w-7xl mx-auto w-full my-auto py-8">
+    <section id="slide-1" data-index="1" data-title="Welcome & Mission" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
+      <div class="max-w-7xl mx-auto w-full my-auto py-6">
         <!-- Top Editorial Meta Bar -->
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-4 mb-10">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-3.5 mb-8">
           <div class="flex items-center gap-3">
             <span class="px-3 py-1 rounded-full bg-coral/15 border border-coral/40 font-mono text-xs text-coral font-semibold">SLIDE 01 / 08</span>
-            <span class="font-mono text-xs text-seafoamLight tracking-widest uppercase">CLINICAL AI &amp; LAB SCANNER // V2.0</span>
+            <span class="font-mono text-xs text-seafoamLight tracking-widest uppercase">MAPÚA UNIVERSITY NURSING HEALTH ADVOCACY</span>
           </div>
-          <div class="font-mono text-xs text-seafoamLight/70">SEPTEMBER 2025 — UPDATED EDITION</div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-sage/20 border border-sage/40 font-mono text-[11px] text-sage font-bold">edition</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-white/10 font-mono text-[11px] text-white font-bold">2026</span>
+          </div>
         </div>
 
         <!-- Main Hero Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <!-- Left Column: Typography & Pill Badges -->
-          <div class="lg:col-span-7 space-y-6">
+          <!-- Left Column -->
+          <div class="lg:col-span-7 space-y-5">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-tealMid/80 border border-seafoam/30 text-seafoamLight font-mono text-xs">
-              <span class="w-2 h-2 rounded-full bg-coral animate-pulse"></span>
-              PATIENT-FRIENDLY INFORMATION ENGINE
+              <span class="w-2 h-2 rounded-full bg-sage animate-pulse"></span>
+              WELCOME TO TRANSLANURSE // OPEN-ACCESS COMPANION
             </div>
 
-            <h1 class="font-display font-extrabold text-5xl sm:text-7xl xl:text-8xl tracking-tight leading-[0.95] text-white">
-              TRANSLA<span class="text-transparent bg-clip-text bg-gradient-to-r from-seafoamLight via-[#72B6A3] to-coral">NURSE.</span>
+            <h1 class="font-serif font-extrabold text-5xl sm:text-6xl xl:text-7xl tracking-tight leading-[1.02] text-white">
+              Welcome to <br>
+              <span class="italic font-serif text-[#72B6A3]">Transla</span><span class="font-display font-extrabold text-seafoamLight not-italic">Nurse.</span>
             </h1>
 
-            <p class="text-xl sm:text-2xl text-alabaster/90 font-medium max-w-2xl leading-relaxed">
-              Patient-Friendly Clinical Consult &amp; Lab Scanner. Turning intimidating medical jargon and lab reports into calm, culturally fluent guidance.
+            <p class="text-lg sm:text-xl text-alabaster/90 font-normal max-w-2xl leading-relaxed">
+              <strong class="text-white font-semibold">TranslaNurse</strong> is an open-access, non-commercial clinical literacy companion that translates complex medical jargon, laboratory results, and symptom questions into plain, compassionate guidance across <strong class="text-seafoamLight">10 Philippine languages</strong> and <strong class="text-coral">7 Asian languages</strong>.
             </p>
 
-            <!-- Floating Feature Pill Tags -->
-            <div class="flex flex-wrap gap-3 pt-2">
-              <span class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-seafoam/30 font-mono text-xs sm:text-sm text-seafoamLight flex items-center gap-2 transition">
-                <i class="fa-solid fa-stethoscope text-coral"></i> [ AI Clinical Translator ]
-              </span>
-              <span class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-seafoam/30 font-mono text-xs sm:text-sm text-seafoamLight flex items-center gap-2 transition">
-                <i class="fa-solid fa-camera-retro text-coral"></i> [ Camera &amp; PDF Lab Scanner ]
-              </span>
-              <span class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-coral/40 font-mono text-xs sm:text-sm text-coral flex items-center gap-2 transition">
-                <i class="fa-solid fa-earth-asia"></i> [ Cultural &amp; Dialect Fluency ]
-              </span>
+            <!-- 3 Feature Cards from 2026 Cover Screenshot -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div class="p-3.5 rounded-2xl bg-white/95 text-slateDark flex items-center gap-3 shadow-md">
+                <span class="w-9 h-9 rounded-xl bg-seafoam/20 text-tealDeep flex items-center justify-center text-base shrink-0">🩺</span>
+                <span class="font-display font-bold text-xs leading-snug">Symptom &amp; Injury Consult</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/95 text-slateDark flex items-center gap-3 shadow-md">
+                <span class="w-9 h-9 rounded-xl bg-seafoam/20 text-tealDeep flex items-center justify-center text-base shrink-0">📷</span>
+                <span class="font-display font-bold text-xs leading-snug">Instant Upload &amp; Lab Scan</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/95 text-slateDark flex items-center gap-3 shadow-md">
+                <span class="w-9 h-9 rounded-xl bg-coral/25 text-slateDark flex items-center justify-center text-base shrink-0">🗂️</span>
+                <span class="font-display font-bold text-xs leading-snug">8 Clickable Info Squares</span>
+              </div>
             </div>
 
-            <div class="pt-4 flex flex-wrap items-center gap-4">
-              <button onclick="scrollToSlide(2)" class="px-6 py-3.5 rounded-2xl bg-seafoam hover:bg-seafoamLight text-slateDark font-display font-bold text-sm tracking-wide transition flex items-center gap-3 shadow-xl shadow-seafoam/20">
-                <span>Explore Pitch Deck</span>
-                <i class="fa-solid fa-arrow-down"></i>
-              </button>
-              <button onclick="scrollToSlide(8)" class="px-6 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/20 text-white font-mono text-xs uppercase tracking-wider transition">
-                Jump to QR Code →
-              </button>
+            <!-- Bottom Multimodal Banner Strip -->
+            <div class="p-4 rounded-2xl bg-navyDeep/90 border border-seafoam/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div class="space-y-1">
+                <span class="font-mono text-[10px] font-bold tracking-widest text-seafoamLight uppercase block">MULTIMODAL LAB OCR &amp; RESEARCH ENGINE</span>
+                <p class="text-xs text-alabaster/80">Drop any lab image/PDF or ask about conditions (<em class="text-coral">dextroscoliosis, high creatinine</em>) for verified clinical references.</p>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <button onclick="scrollToSlide(4)" class="px-4 py-2.5 rounded-xl bg-seafoam hover:bg-seafoamLight text-slateDark font-display font-bold text-xs transition whitespace-nowrap">
+                  Try 8-Square Demo →
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- Right Column: High-Craft SVG Recreation of TranslaNurse Logo Card -->
+          <!-- Right Column: Official TranslaNurse Emblem Card -->
           <div class="lg:col-span-5 flex justify-center">
-            <div class="relative group w-full max-w-[380px]">
-              <!-- Glowing Backdrop Aura -->
+            <div class="relative group w-full max-w-[360px]">
               <div class="absolute -inset-3 rounded-[2.5rem] bg-gradient-to-tr from-seafoam via-coral to-[#72B6A3] opacity-40 blur-2xl group-hover:opacity-65 transition duration-500"></div>
-
-              <!-- Crisp White Emblem Card -->
-              <div class="relative bg-white rounded-[2.2rem] p-8 shadow-2xl border border-white/60 flex flex-col items-center justify-center float-slow">
+              <div class="relative bg-white rounded-[2.2rem] p-7 shadow-2xl border border-white/60 flex flex-col items-center justify-center float-slow">
                 <svg viewBox="0 0 400 380" class="w-full h-auto" aria-label="TranslaNurse Official Logo">
                   <defs>
                     <linearGradient id="heroArcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -337,45 +416,28 @@
                       <stop offset="100%" stop-color="#58B08C" />
                     </linearGradient>
                   </defs>
-                  <!-- Outer Partial Circular Ring -->
                   <path d="M 278 60 A 135 135 0 1 0 296 248" fill="none" stroke="url(#heroArcGrad)" stroke-width="5.5" stroke-linecap="round" />
                   <circle cx="278" cy="60" r="6" fill="#F4979C" />
                   <circle cx="296" cy="248" r="6" fill="#66CED6" />
-
-                  <!-- Coral Speech Bubble (Top Right) -->
                   <path d="M 205 108 C 242 108 268 128 268 156 C 268 172 256 186 239 194 L 246 212 L 222 201 C 216 202 211 203 205 203 C 168 203 142 183 142 156 C 142 128 168 108 205 108 Z" fill="#F4979C" />
                   <circle cx="182" cy="156" r="6.5" fill="#FFFFFF" />
                   <circle cx="205" cy="156" r="6.5" fill="#FFFFFF" />
                   <circle cx="228" cy="156" r="6.5" fill="#FFFFFF" />
-
-                  <!-- Seafoam Speech Bubble (Bottom Left) -->
                   <path d="M 152 155 C 188 155 215 175 215 202 C 215 220 201 236 183 243 L 188 262 L 166 248 C 161 249 157 249 152 249 C 116 249 89 229 89 202 C 89 175 116 155 152 155 Z" fill="#70C9D6" />
                   <circle cx="129" cy="202" r="6.5" fill="#FFFFFF" />
                   <circle cx="152" cy="202" r="6.5" fill="#FFFFFF" />
                   <circle cx="175" cy="202" r="6.5" fill="#FFFFFF" />
-
-                  <!-- Primary Dark Teal Medical Cross -->
                   <path d="M276 74 H302 V100 H328 V126 H302 V152 H276 V126 H250 V100 H276 Z" fill="#005F66" />
-
-                  <!-- Decorative Outlined & Pastel Crosses -->
-                  <!-- Top Small Outlined Cross -->
                   <path d="M244 60 H252 V68 H260 V76 H252 V84 H244 V76 H236 V68 H244 Z" fill="none" stroke="#005F66" stroke-width="2" />
-                  <!-- Left Cyan Outlined Cross -->
                   <path d="M122 118 H132 V128 H142 V138 H132 V148 H122 V138 H112 V128 H122 Z" fill="none" stroke="#00B4B8" stroke-width="2.5" />
-                  <!-- Bottom Teal Outlined Cross -->
                   <path d="M206 212 H222 V228 H238 V244 H222 V260 H206 V244 H190 V228 H206 Z" fill="none" stroke="#00B4B8" stroke-width="3" />
-                  <!-- Right Pink Outlined Cross -->
                   <path d="M304 144 H320 V160 H336 V176 H320 V192 H304 V176 H288 V160 H304 Z" fill="none" stroke="#E8B4B8" stroke-width="3" />
-                  <!-- Small Solid Accents -->
                   <path d="M225 84 H233 V92 H241 V100 H233 V108 H225 V100 H217 V92 H225 Z" fill="#A0D8E0" />
                   <path d="M262 172 H270 V180 H278 V188 H270 V196 H262 V188 H254 V180 H262 Z" fill="#A0D8E0" />
                   <path d="M250 198 H256 V204 H262 V210 H256 V216 H250 V210 H244 V204 H250 Z" fill="#F4979C" opacity="0.6" />
-
-                  <!-- Typography Wordmark -->
                   <text x="200" y="328" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="52">
                     <tspan fill="#72B6A3">transla</tspan><tspan fill="#3DB5C4">nurse</tspan>
                   </text>
-                  <!-- Subtitle & Lines -->
                   <line x1="25" y1="354" x2="112" y2="354" stroke="#005F66" stroke-width="2" />
                   <text x="200" y="359" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" fill="#666666">patient friendly information</text>
                   <line x1="288" y1="354" x2="375" y2="354" stroke="#005F66" stroke-width="2" />
@@ -386,13 +448,13 @@
         </div>
 
         <!-- Bottom Presenter Credits Footer -->
-        <div class="mt-12 pt-5 border-t border-seafoam/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
+        <div class="mt-8 pt-4 border-t border-seafoam/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex flex-wrap items-center gap-3">
             <span class="font-mono text-xs uppercase tracking-widest text-coral font-bold">PRESENTED BY:</span>
             <span class="font-display font-bold text-sm sm:text-base text-white tracking-wide">Contreras • Driz • Marcelo • Ramos • Villabroza</span>
           </div>
           <div class="font-mono text-xs text-seafoamLight flex items-center gap-2">
-            <span>USE ARROW KEYS OR SCROLL</span>
+            <span>17+ LANGUAGES • ZERO-MEDICATION SAFETY</span>
             <i class="fa-solid fa-angles-down animate-bounce text-coral"></i>
           </div>
         </div>
@@ -404,14 +466,13 @@
          ========================================== -->
     <section id="slide-2" data-index="2" data-title="The Clinical Disconnect" class="slide-section aura-light editorial-grid-light text-slateDark px-6 sm:px-12 lg:px-20 pt-16">
       <div class="max-w-7xl mx-auto w-full my-auto py-8">
-        <!-- Section Tag -->
         <div class="flex items-center justify-between border-b border-tealDeep/15 pb-4 mb-10">
-          <span class="font-mono text-xs font-bold tracking-widest text-tealMid uppercase">02 / 08 // THE "WHY" BEHIND TRANSLANURSE</span>
-          <span class="font-mono text-xs text-coralDark font-semibold">CLINICAL EMPATHY MEETS AI</span>
+          <span class="font-mono text-xs font-bold tracking-widest text-tealMid uppercase">02 / 08 // THE CLINICAL DISCONNECT</span>
+          <span class="font-mono text-xs text-coralDark font-semibold">MAPÚA UNIVERSITY NURSING INITIATIVE</span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          <!-- Left Dark Grainy Statement Block -->
+          <!-- Left Dark Statement Card -->
           <div class="lg:col-span-5 bg-slateDark text-alabaster rounded-3xl p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden shadow-2xl border border-tealMid">
             <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-coral/20 blur-2xl pointer-events-none"></div>
             <div>
@@ -422,52 +483,48 @@
                 MEDICAL JARGON SHOULDN'T BE A BARRIER TO CARE.
               </h2>
               <p class="text-seafoamLight/90 text-base sm:text-lg leading-relaxed">
-                Patients leave clinics overwhelmed by lab portals and discharge abbreviations. We bridge the gap between complex physiology and safe home recovery.
+                Patients leave clinics overwhelmed by lab portals, CBC/Creatinine tables, and discharge abbreviations. We bridge the gap between complex physiology and safe home recovery.
               </p>
             </div>
-
             <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-              <span class="font-mono text-xs text-coral uppercase tracking-wider">BEDSIDE EDUCATOR ROLE</span>
-              <i class="fa-solid fa-plus text-seafoam"></i>
+              <span class="font-mono text-xs text-coral uppercase tracking-wider">STUDENT-LED HEALTH ADVOCACY</span>
+              <i class="fa-solid fa-user-nurse text-seafoam"></i>
             </div>
           </div>
 
-          <!-- Right 3 Sleek Glassmorphic Bento Cards -->
+          <!-- Right 3 Sleek Pillar Cards -->
           <div class="lg:col-span-7 flex flex-col justify-between gap-5">
-            <!-- Card 01 -->
-            <div class="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-tealDeep/15 shadow-lg hover:shadow-xl hover:border-seafoam transition group">
+            <div class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-tealDeep/15 shadow-lg hover:shadow-xl hover:border-seafoam transition group">
               <div class="flex items-start gap-5">
                 <span class="font-mono text-xs font-bold px-3 py-1.5 rounded-lg bg-tealDeep text-seafoamLight shrink-0">01 // CLARITY</span>
                 <div>
-                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-tealDeep mb-1.5 group-hover:text-tealMid transition">Demystifying Data &amp; Jargon</h3>
+                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-tealDeep mb-1.5">Plain-Language Health Literacy</h3>
                   <p class="text-slateDark/80 text-base leading-relaxed">
-                    Breaking down intimidating clinical notes, physiological terms, and lab markers into calm, digestible everyday language.
+                    Converts intimidating clinical notes, radiological findings (e.g., <em>dextroscoliosis</em>), and lab analytes into calm 5th-to-12th grade reading levels.
                   </p>
                 </div>
               </div>
             </div>
 
-            <!-- Card 02 -->
-            <div class="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-tealDeep/15 shadow-lg hover:shadow-xl hover:border-coral transition group">
+            <div class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-tealDeep/15 shadow-lg hover:shadow-xl hover:border-coral transition group">
               <div class="flex items-start gap-5">
                 <span class="font-mono text-xs font-bold px-3 py-1.5 rounded-lg bg-coral/25 text-slateDark border border-coral shrink-0">02 // TRUST</span>
                 <div>
-                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-tealDeep mb-1.5">The "Nurse" Factor of Trust</h3>
+                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-tealDeep mb-1.5">The Bedside "Nurse" Factor</h3>
                   <p class="text-slateDark/80 text-base leading-relaxed">
-                    AI alone triggers skepticism. Nursing is globally recognized as the most trusted profession—embodying bedside empathy and safe patient education.
+                    Built by nursing students at Mapúa University—combining clinical AI speed with bedside nursing empathy, family caregiver support, and cultural sensitivity.
                   </p>
                 </div>
               </div>
             </div>
 
-            <!-- Card 03 -->
-            <div class="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-tealDeep/15 shadow-lg hover:shadow-xl hover:border-tealDeep transition group">
+            <div class="bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-tealDeep/15 shadow-lg hover:shadow-xl hover:border-tealDeep transition group">
               <div class="flex items-start gap-5">
-                <span class="font-mono text-xs font-bold px-3 py-1.5 rounded-lg bg-seafoam/25 text-tealDeep border border-seafoam shrink-0">03 // SAFETY</span>
+                <span class="font-mono text-xs font-bold px-3 py-1.5 rounded-lg bg-seafoam/25 text-tealDeep border border-seafoam shrink-0">03 // BOUNDARY</span>
                 <div>
-                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-tealDeep mb-1.5">Strict Non-Diagnostic Boundary</h3>
+                  <h3 class="font-display font-extrabold text-xl sm:text-2xl text-tealDeep mb-1.5">Strict Non-Diagnostic &amp; Zero-Drug Scope</h3>
                   <p class="text-slateDark/80 text-base leading-relaxed">
-                    Zero medical verdicts. We decode the meaning behind clinical data and explicitly route patients directly back to their physician.
+                    Zero medical verdicts or prescriptions. TranslaNurse explains terminology, checks red-flag limits, and prepares patients for licensed physician consults.
                   </p>
                 </div>
               </div>
@@ -478,124 +535,131 @@
     </section>
 
     <!-- ==========================================
-         SLIDE 03 / 08: THE UPGRADED ENGINE (WELCOME TO V2.0)
+         SLIDE 03 / 08: MULTIMODAL LAB OCR & 1-CLICK SCENARIOS
          ========================================== -->
-    <section id="slide-3" data-index="3" data-title="The Upgraded Engine v2.0" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
-      <div class="max-w-7xl mx-auto w-full my-auto py-8">
-        <!-- Header -->
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-4 mb-8">
-          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">03 / 08 // MAJOR PLATFORM UPGRADE</span>
-          <span class="font-mono text-xs text-seafoamLight">NEW URL: CZAS-CODING.GITHUB.IO/THETRANSLANURSE/</span>
-        </div>
-
-        <div class="mb-8">
-          <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
-            FROM TEXT INPUT TO <span class="text-seafoamLight">FULL LAB SCANNER.</span>
-          </h2>
+    <section id="slide-3" data-index="3" data-title="01. Clinical Input & Lab OCR" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
+      <div class="max-w-7xl mx-auto w-full my-auto py-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-3.5 mb-6">
+          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">03 / 08 // MULTIMODAL LAB OCR &amp; SCENARIO ENGINE</span>
+          <span class="font-mono text-xs text-seafoamLight">👆 CLICK ANY SCENARIO CHIP BELOW TO SIMULATE INPUT</span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <!-- Left: Faithful Mockup of the New v2.0 App Input & Welcome Screen -->
-          <div class="lg:col-span-7 bg-[#F3F8F8] text-slateDark rounded-3xl overflow-hidden shadow-2xl border-2 border-seafoam/40">
-            <!-- Top App Bar Recreated from Screenshot -->
-            <div class="bg-white px-5 py-3 border-b border-tealDeep/10 flex flex-wrap items-center justify-between gap-2">
-              <div>
-                <div class="font-display font-extrabold text-base leading-none">
-                  <span class="text-[#69B5A0]">transla</span><span class="text-[#37A8B8]">nurse</span>
-                </div>
-                <span class="text-[10px] text-slateDark/60 block">patient friendly clinical consult &amp; lab scanner</span>
+          <!-- Left: Interactive Recreation of 01. Clinical Input Card from Screenshot -->
+          <div class="lg:col-span-7 bg-white text-slateDark rounded-3xl p-6 sm:p-7 shadow-2xl border-2 border-seafoam/40 space-y-4">
+            <div class="flex items-center justify-between border-b border-slateDark/10 pb-3">
+              <h3 class="font-serif font-extrabold text-2xl text-navyDeep">01. Clinical Input</h3>
+              <span class="px-3 py-1 rounded-full border border-slateDark/20 text-xs font-semibold text-slateDark flex items-center gap-1.5">
+                💬 Follow-Up Q&amp;A <b class="bg-tealMid text-white px-1.5 py-0.2 rounded-full text-[10px]">19</b>
+              </span>
+            </div>
+
+            <!-- Interactive 1-Click Scenario Chips -->
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono font-bold text-slateDark/60 uppercase mb-2">
+                <span>TRY AN INTERACTIVE CLINICAL SCENARIO:</span>
+                <span class="text-tealMid">1-CLICK DEMO</span>
               </div>
-              <div class="flex items-center gap-1.5">
-                <span class="px-2.5 py-1 rounded-full border border-tealDeep/15 text-[11px] font-medium bg-white flex items-center gap-1">
-                  🏠 Home
-                </span>
-                <span class="px-2.5 py-1 rounded-full border border-tealMid bg-[#E6F4F6] text-tealDeep text-[11px] font-semibold flex items-center gap-1">
-                  💬 Follow-Up &amp; History <b class="bg-tealMid text-white px-1.5 rounded-full text-[10px]">13</b>
-                </span>
-                <span class="px-2.5 py-1 rounded-full border border-tealDeep/15 text-[11px] font-medium bg-white flex items-center gap-1">
-                  🌙 Dark Mode
-                </span>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="loadScenario(0)" class="scenario-chip active px-3 py-1.5 rounded-full border border-slateDark/20 text-xs font-semibold transition flex items-center gap-1.5">
+                  <span>脊椎</span> Dextroscoliosis
+                </button>
+                <button onclick="loadScenario(1)" class="scenario-chip px-3 py-1.5 rounded-full border border-slateDark/20 text-xs font-semibold transition flex items-center gap-1.5">
+                  <span>🦴</span> Wrist Fall / Fracture
+                </button>
+                <button onclick="loadScenario(2)" class="scenario-chip px-3 py-1.5 rounded-full border border-slateDark/20 text-xs font-semibold transition flex items-center gap-1.5">
+                  <span>🧪</span> High FBS &amp; Creatinine
+                </button>
+                <button onclick="loadScenario(3)" class="scenario-chip px-3 py-1.5 rounded-full border border-slateDark/20 text-xs font-semibold transition flex items-center gap-1.5">
+                  <span>❤️</span> BP 152/96 mmHg
+                </button>
               </div>
             </div>
 
-            <!-- App Body Mockup -->
-            <div class="p-5 sm:p-6 space-y-4">
-              <div class="flex items-center justify-between">
-                <h3 class="font-display font-extrabold text-lg text-tealMid">1. Clinical Input</h3>
-                <span class="text-xs px-3 py-1 rounded-full border border-tealDeep/20 bg-white font-medium text-slateDark">💬 Follow-Up Inquiry</span>
+            <!-- Live Textarea Box -->
+            <div>
+              <label class="block font-mono text-[10px] font-bold uppercase text-slateDark/60 mb-1">SYMPTOM, CONDITION, OR LAB VALUES</label>
+              <div id="scenario-input-box" class="bg-[#F8FAFB] rounded-2xl p-3.5 border border-seafoam/60 text-xs sm:text-sm text-slateDark font-medium min-h-[74px] flex items-center">
+                "Chest X-Ray Report: Mild thoracic dextroscoliosis noted. Heart size is normal. Lungs are clear."
               </div>
+            </div>
 
-              <!-- Symptom / Question Box -->
-              <div class="bg-white rounded-xl p-3.5 border border-seafoam/60 text-xs text-slateDark/70 space-y-1 shadow-inner">
-                <p class="font-semibold text-slateDark">Ask any health question, describe what you feel, or paste lab results...</p>
-                <p>Examples: 'I think I broke my bone / my wrist is swollen' • 'WBC count 7,500/mcL'</p>
+            <!-- Dashed Lab OCR Dropzone -->
+            <div class="rounded-2xl border-2 border-dashed border-seafoam bg-[#F0F9FA] p-4 text-center space-y-2.5">
+              <div class="flex items-center justify-between text-[10px] font-mono font-bold uppercase text-tealDeep px-1">
+                <span>SCAN OR DROP LAB REPORT (IMAGE / PDF)</span>
+                <span>CTRL+V SUPPORTED</span>
               </div>
+              <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
+                <a href="https://czas-coding.github.io/translanurse/" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-seafoam/10 border border-slateDark/20 rounded-xl py-2.5 px-3 font-bold text-xs text-slateDark flex items-center justify-center gap-2 shadow-sm transition">
+                  <i class="fa-solid fa-camera text-tealMid"></i> Live Camera Scan
+                </a>
+                <a href="https://czas-coding.github.io/translanurse/" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-seafoam/10 border border-slateDark/20 rounded-xl py-2.5 px-3 font-bold text-xs text-slateDark flex items-center justify-center gap-2 shadow-sm transition">
+                  <i class="fa-solid fa-file-arrow-up text-tealMid"></i> Upload Image / PDF
+                </a>
+              </div>
+              <p class="text-[11px] text-slateDark/70">
+                Supports <b>PNG, JPG, JFIF, WEBP, HEIC, BMP, or PDF</b> • Drag &amp; Drop or <b>Paste (Ctrl+V)</b>
+              </p>
+            </div>
 
-              <!-- Dashed Camera & Upload Lab Scanner Zone -->
-              <div class="rounded-2xl border-2 border-dashed border-seafoam bg-[#EBF6F8]/70 p-4 text-center space-y-3">
-                <div class="text-[11px] font-bold uppercase tracking-wider text-tealDeep">
-                  OPTIONAL: SCAN OR UPLOAD LAB RESULT (ALL IMAGE FORMATS OR PDF)
+            <!-- Literacy & Demographic Selectors + Action Button -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-[#F8FAFB] px-3 py-2 rounded-xl border border-slateDark/15 text-xs">
+                <span class="block text-[9px] font-mono font-bold text-slateDark/50 uppercase">TARGET HEALTH LITERACY LEVEL</span>
+                <span class="font-semibold text-slateDark">8th Grade (Standard Patient)</span>
+              </div>
+              <div class="bg-[#F8FAFB] px-3 py-2 rounded-xl border border-slateDark/15 text-xs">
+                <span class="block text-[9px] font-mono font-bold text-slateDark/50 uppercase">CULTURAL &amp; DEMOGRAPHIC TARGET</span>
+                <span class="font-semibold text-slateDark">General Public / PH Dialect</span>
+              </div>
+            </div>
+
+            <button onclick="scrollToSlide(4)" class="w-full py-3.5 rounded-full bg-gradient-to-r from-navyDeep via-tealDeep to-tealMid hover:opacity-95 text-white font-display font-bold text-sm shadow-lg transition flex items-center justify-center gap-2">
+              <span>Analyze &amp; Translate Clinical Digest</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Right: 3 Key Engineering Highlights -->
+          <div class="lg:col-span-5 space-y-5">
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight leading-tight">
+              INSTANT OCR FOR <span class="text-seafoamLight">STANDARD LAB FORMS.</span>
+            </h2>
+            <p class="text-alabaster/80 text-sm sm:text-base">
+              Extracts individual analyte lines from photos or PDFs and correlates them against validated clinical reference ranges:
+            </p>
+
+            <div class="space-y-3.5">
+              <div class="bg-tealDeep/70 border border-seafoam/30 rounded-2xl p-5">
+                <div class="flex items-center gap-3 mb-1.5">
+                  <span class="px-2.5 py-0.5 rounded bg-seafoam/20 text-seafoamLight font-mono text-xs font-bold">OCR ENGINE</span>
+                  <h4 class="font-display font-bold text-base text-white">CBC, FBS, Creatinine, Lipid &amp; Urinalysis</h4>
                 </div>
-                <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
-                  <a href="https://czas-coding.github.io/thetranslanurse/" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-seafoam/10 border border-tealMid/40 rounded-xl py-3 px-3 font-bold text-xs text-tealDeep flex items-center justify-center gap-2 shadow-sm transition">
-                    <span>📷 Open Camera Scan</span>
-                  </a>
-                  <a href="https://czas-coding.github.io/thetranslanurse/" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-seafoam/10 border border-tealMid/40 rounded-xl py-3 px-3 font-bold text-xs text-tealDeep flex items-center justify-center gap-2 shadow-sm transition">
-                    <span>📎 Upload Image / PDF Lab</span>
-                  </a>
-                </div>
-                <p class="text-[11px] text-slateDark/75">
-                  💡 Supports <b>PNG, JPG, JFIF, WEBP, HEIC, BMP, or PDF</b> • Drag &amp; Drop or <b>Paste (Ctrl+V)</b>
+                <p class="text-alabaster/80 text-xs sm:text-sm leading-relaxed">
+                  Automatically flags each lab marker as <b class="text-emerald-300">Normal</b>, <b class="text-amber-300">High</b>, or <b class="text-coral">Low</b> against peer-reviewed reference intervals.
                 </p>
               </div>
 
-              <!-- Dropdowns & Action Button -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                <div class="bg-white px-3 py-2 rounded-xl border border-tealDeep/20 text-xs">
-                  <span class="block text-[10px] font-bold text-tealDeep/70">TARGET HEALTH LITERACY</span>
-                  <span class="font-semibold">8th Grade (Standard Patient Average)</span>
+              <div class="bg-tealDeep/70 border border-coral/40 rounded-2xl p-5">
+                <div class="flex items-center gap-3 mb-1.5">
+                  <span class="px-2.5 py-0.5 rounded bg-coral/20 text-coral font-mono text-xs font-bold">LITERACY TUNING</span>
+                  <h4 class="font-display font-bold text-base text-white">5th-Grade to 12th-Grade Adaptation</h4>
                 </div>
-                <div class="bg-white px-3 py-2 rounded-xl border border-tealDeep/20 text-xs">
-                  <span class="block text-[10px] font-bold text-tealDeep/70">CULTURAL &amp; DEMOGRAPHIC TARGET</span>
-                  <span class="font-semibold">General Public / Regional Dialect</span>
+                <p class="text-alabaster/80 text-xs sm:text-sm leading-relaxed">
+                  Dynamically adjusts sentence complexity for Pediatric Parents, Elderly/Geriatric patients, or Family Caregivers.
+                </p>
+              </div>
+
+              <div class="bg-tealDeep/70 border border-seafoam/30 rounded-2xl p-5">
+                <div class="flex items-center gap-3 mb-1.5">
+                  <span class="px-2.5 py-0.5 rounded bg-seafoam/20 text-seafoamLight font-mono text-xs font-bold">1-CLICK EXPORT</span>
+                  <h4 class="font-display font-bold text-base text-white">Print Editorial Guide &amp; .TXT Summary</h4>
                 </div>
+                <p class="text-alabaster/80 text-xs sm:text-sm leading-relaxed">
+                  Bedside nurses can print clean patient take-home sheets or download `.TXT` summaries in seconds.
+                </p>
               </div>
-              <div class="w-full py-3 rounded-xl bg-gradient-to-r from-tealMid to-[#278C9A] text-white text-center font-bold text-sm shadow-md">
-                Analyze &amp; Explain Results
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: 3 Concise Graphic Callouts -->
-          <div class="lg:col-span-5 space-y-5">
-            <div class="bg-tealDeep/70 border border-seafoam/30 rounded-2xl p-6 hover:border-coral transition">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="w-8 h-8 rounded-lg bg-seafoam/20 text-seafoamLight flex items-center justify-center font-mono text-xs font-bold">01</span>
-                <h3 class="font-display font-bold text-xl text-white">Symptom &amp; Injury Consult</h3>
-              </div>
-              <p class="text-alabaster/80 text-sm sm:text-base leading-relaxed">
-                Type any health problem or question to understand what you feel, red-flag limits, and safe first-aid steps.
-              </p>
-            </div>
-
-            <div class="bg-tealDeep/70 border border-coral/40 rounded-2xl p-6 hover:border-coral transition">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="w-8 h-8 rounded-lg bg-coral/20 text-coral flex items-center justify-center font-mono text-xs font-bold">02</span>
-                <h3 class="font-display font-bold text-xl text-white">Instant Camera &amp; File Scan</h3>
-              </div>
-              <p class="text-alabaster/80 text-sm sm:text-base leading-relaxed">
-                Snap via live camera or drag-and-drop lab files (<code class="text-coral font-mono text-xs">PNG, JPG, WEBP, HEIC, PDF</code>) for individual marker flag cards.
-              </p>
-            </div>
-
-            <div class="bg-tealDeep/70 border border-seafoam/30 rounded-2xl p-6 hover:border-seafoamLight transition">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="w-8 h-8 rounded-lg bg-seafoam/20 text-seafoamLight flex items-center justify-center font-mono text-xs font-bold">03</span>
-                <h3 class="font-display font-bold text-xl text-white">Follow-Up &amp; History Log</h3>
-              </div>
-              <p class="text-alabaster/80 text-sm sm:text-base leading-relaxed">
-                Ask contextual follow-up questions, review past audited translations, and toggle bedside Dark Mode effortlessly.
-              </p>
             </div>
           </div>
         </div>
@@ -603,116 +667,158 @@
     </section>
 
     <!-- ==========================================
-         SLIDE 04 / 08: INSIDE THE WORKSPACE (7 CLICKABLE INFO SQUARES)
+         SLIDE 04 / 08: 02. CLINICAL GUIDANCE & DIGEST (8 CLICKABLE SQUARES)
          ========================================== -->
-    <section id="slide-4" data-index="4" data-title="7 Clickable Info Squares" class="slide-section aura-light editorial-grid-light text-slateDark px-6 sm:px-12 lg:px-20 pt-16">
-      <div class="max-w-7xl mx-auto w-full my-auto py-8">
-        <!-- Header -->
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-tealDeep/15 pb-3 mb-6">
-          <span class="font-mono text-xs font-bold tracking-widest text-tealMid uppercase">04 / 08 // MODULAR PATIENT GUIDANCE</span>
-          <span class="px-3 py-1 rounded-full bg-tealDeep text-seafoamLight font-mono text-xs font-semibold animate-pulse">
-            👆 INTERACTIVE DEMO: CLICK ANY SQUARE BELOW
+    <section id="slide-4" data-index="4" data-title="8 Clickable Info Squares" class="slide-section aura-light editorial-grid-light text-slateDark px-6 sm:px-12 lg:px-20 pt-16">
+      <div class="max-w-7xl mx-auto w-full my-auto py-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-tealDeep/15 pb-3 mb-5">
+          <span class="font-mono text-xs font-bold tracking-widest text-tealMid uppercase">04 / 08 // 02. CLINICAL GUIDANCE &amp; DIGEST</span>
+          <span class="px-3 py-1 rounded-full bg-navyDeep text-seafoamLight font-mono text-xs font-semibold animate-pulse">
+            👆 CLICK ANY OF THE 8 SQUARES TO EXPLORE
           </span>
         </div>
 
-        <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-slateDark tracking-tight">
-              ZERO WALLS OF TEXT. <span class="text-tealMid">7 INTERACTIVE SQUARES.</span>
-            </h2>
-            <p class="text-slateDark/75 text-base sm:text-lg mt-1">
-              Spacious, clickable modules tailored from 5th-grade plain language to 12th-grade health literacy.
-            </p>
-          </div>
-        </div>
-
-        <!-- Interactive Workspace Container Recreating image_23f671.png -->
+        <!-- Interactive 8-Square Workspace Container (Exact Match to image_3d6737.png) -->
         <div class="bg-white rounded-3xl p-5 sm:p-7 shadow-2xl border border-tealDeep/15">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <h2 class="font-serif font-extrabold text-2xl sm:text-3xl text-navyDeep">02. Clinical Guidance &amp; Digest</h2>
+            <span id="active-scenario-pill" class="px-3 py-1 rounded-full bg-tealMid/10 text-tealMid font-mono text-xs font-bold">
+              Active Case: Dextroscoliosis &amp; General Triage
+            </span>
+          </div>
+
           <!-- Green Triage Banner -->
-          <div id="demo-triage-banner" class="w-full rounded-2xl bg-[#DFF6E6] border border-[#2FA866] px-5 py-3.5 mb-6 flex flex-wrap items-center justify-between gap-2 transition-all">
+          <div id="demo-triage-banner" class="w-full rounded-2xl bg-[#DFF6E6] border border-[#2FA866] px-5 py-3 mb-5 flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2.5 text-[#135E35] font-bold text-sm sm:text-base">
-              <span class="text-lg">✅</span>
-              <span id="demo-triage-title">Safe - Great Job in being healthy (Interactive Preview)</span>
+              <span>✅</span>
+              <span id="demo-triage-title">Safe - Great Job in being healthy</span>
             </div>
-            <span class="text-xs font-medium text-[#135E35]/80">Click any square on the left sidebar to explore details</span>
+            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-[#135E35]/80">SELECT ANY SQUARE BELOW</span>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <!-- Left 2-Column Grid of 7 Clickable Squares -->
-            <div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3">
-              <button onclick="selectSquare(0)" class="info-square-btn active rounded-2xl p-3.5 border-2 border-tealMid/20 bg-[#F8FBFB] hover:border-tealMid text-center transition flex flex-col items-center justify-center gap-1.5">
-                <span class="text-2xl">🩺</span>
-                <span class="font-display font-bold text-xs sm:text-sm text-slateDark leading-tight">What It Means</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-white border border-tealDeep/15 text-[10px] font-semibold text-tealMid">Overview</span>
+            <!-- Left 2x4 Grid of 8 Clickable Info Squares -->
+            <div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-2.5">
+              <!-- Square 01 -->
+              <button onclick="selectSquare(0)" class="info-square-btn active rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xl">🩺</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">01</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">What It Means &amp; Ranges</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-slateDark">OVERVIEW</span>
               </button>
 
-              <button onclick="selectSquare(1)" class="info-square-btn rounded-2xl p-3.5 border-2 border-tealMid/20 bg-[#F8FBFB] hover:border-tealMid text-center transition flex flex-col items-center justify-center gap-1.5">
-                <span class="text-2xl">🔍</span>
-                <span class="font-display font-bold text-xs sm:text-sm text-slateDark leading-tight">Why Safe / Unsafe</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-white border border-tealDeep/15 text-[10px] font-semibold text-tealMid">Triage</span>
+              <!-- Square 02 -->
+              <button onclick="selectSquare(1)" class="info-square-btn rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xl">🔍</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">02</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">Why Safe / Unsafe</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-slateDark">TRIAGE</span>
               </button>
 
-              <button onclick="selectSquare(2)" class="info-square-btn rounded-2xl p-3.5 border-2 border-tealMid/20 bg-[#F8FBFB] hover:border-tealMid text-center transition flex flex-col items-center justify-center gap-1.5">
-                <span class="text-2xl">⚡</span>
-                <span class="font-display font-bold text-xs sm:text-sm text-slateDark leading-tight">What You Feel &amp; Limits</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-white border border-tealDeep/15 text-[10px] font-semibold text-coralDark">Red Flags</span>
+              <!-- Square 03 -->
+              <button onclick="selectSquare(2)" class="info-square-btn rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xl">⚡</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">03</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">What You Feel &amp; Limits</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-coralDark">RED FLAGS</span>
               </button>
 
-              <button onclick="selectSquare(3)" class="info-square-btn rounded-2xl p-3.5 border-2 border-tealMid/20 bg-[#F8FBFB] hover:border-tealMid text-center transition flex flex-col items-center justify-center gap-1.5">
-                <span class="text-2xl">🛡️</span>
-                <span class="font-display font-bold text-xs sm:text-sm text-slateDark leading-tight">What Can I Do?</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-white border border-tealDeep/15 text-[10px] font-semibold text-tealMid">First Aid &amp; Hotlines</span>
+              <!-- Square 04 -->
+              <button onclick="selectSquare(3)" class="info-square-btn rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xl">🛡️</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">04</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">What Can I Do?</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-slateDark">FIRST AID &amp; NCR</span>
               </button>
 
-              <button onclick="selectSquare(4)" class="info-square-btn rounded-2xl p-3.5 border-2 border-tealMid/20 bg-[#F8FBFB] hover:border-tealMid text-center transition flex flex-col items-center justify-center gap-1.5">
-                <span class="text-2xl">🌏</span>
-                <span class="font-display font-bold text-xs sm:text-sm text-slateDark leading-tight">10 Asian Languages</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-coral/20 border border-coral text-[10px] font-bold text-slateDark">Tagalog + 9</span>
+              <!-- Square 05 -->
+              <button onclick="selectSquare(4)" class="info-square-btn rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="font-display font-extrabold text-sm text-tealDeep">PH</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">05</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">Philippine Languages</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-tealDeep">10 PH DIALECTS</span>
               </button>
 
-              <button onclick="selectSquare(5)" class="info-square-btn rounded-2xl p-3.5 border-2 border-tealMid/20 bg-[#F8FBFB] hover:border-tealMid text-center transition flex flex-col items-center justify-center gap-1.5">
-                <span class="text-2xl">🧸</span>
-                <span class="font-display font-bold text-xs sm:text-sm text-slateDark leading-tight">Kid-Friendly Analogy</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-white border border-tealDeep/15 text-[10px] font-semibold text-tealMid">Simple Story</span>
+              <!-- Square 06 -->
+              <button onclick="selectSquare(5)" class="info-square-btn rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xl">🌏</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">06</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">Other Asian Countries</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-slateDark">7 ASIAN LANGS</span>
               </button>
 
-              <button onclick="selectSquare(6)" class="info-square-btn col-span-2 sm:col-span-2 lg:col-span-1 rounded-2xl p-3.5 border-2 border-tealMid/20 bg-[#F8FBFB] hover:border-tealMid text-center transition flex flex-col items-center justify-center gap-1.5">
-                <span class="text-2xl">📖</span>
-                <span class="font-display font-bold text-xs sm:text-sm text-slateDark leading-tight">Jargon &amp; Audit</span>
-                <span class="px-2.5 py-0.5 rounded-full bg-white border border-tealDeep/15 text-[10px] font-semibold text-tealMid">Dictionary</span>
+              <!-- Square 07 -->
+              <button onclick="selectSquare(6)" class="info-square-btn rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xl">🧸</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">07</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">Kid-Friendly Analogy</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-slateDark">SIMPLE STORY</span>
+              </button>
+
+              <!-- Square 08 -->
+              <button onclick="selectSquare(7)" class="info-square-btn rounded-2xl p-3.5 border border-slateDark/15 bg-[#F4F7F9] text-left flex flex-col justify-between min-h-[108px]">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xl">📖</span>
+                  <span class="sq-num font-mono text-[11px] font-bold text-slateDark/50">08</span>
+                </div>
+                <div class="sq-title font-display font-extrabold text-xs sm:text-sm text-slateDark leading-snug my-1">Jargon &amp; Audit</div>
+                <span class="sq-badge self-start px-2.5 py-0.5 rounded-full bg-white border border-slateDark/20 font-mono text-[9px] font-bold uppercase text-slateDark">DICTIONARY</span>
               </button>
             </div>
 
             <!-- Right Dynamic Output Card -->
-            <div class="lg:col-span-7 bg-[#F5F9FA] rounded-2xl p-5 sm:p-6 border border-tealDeep/15 space-y-4">
-              <div class="flex items-center justify-between border-b border-tealDeep/10 pb-3">
-                <h3 id="square-heading" class="font-display font-extrabold text-lg sm:text-xl text-tealMid flex items-center gap-2">
+            <div class="lg:col-span-7 bg-[#F8FAFB] rounded-2xl p-5 sm:p-6 border border-slateDark/15 space-y-4">
+              <div class="flex items-center justify-between border-b border-slateDark/10 pb-3">
+                <h3 id="square-heading" class="font-serif font-extrabold text-lg sm:text-xl text-tealMid flex items-center gap-2">
                   <span>🩺</span> <span>What Your Input / Situation Means</span>
                 </h3>
-                <span id="square-tag" class="font-mono text-xs px-2.5 py-1 rounded bg-tealMid/10 text-tealMid font-bold">SQUARE 01 / 07</span>
+                <span id="square-tag" class="font-mono text-xs px-2.5 py-1 rounded bg-tealMid/10 text-tealMid font-bold">SQUARE 01 / 08</span>
               </div>
 
               <!-- Mandatory Amber Medical Note Disclaimer -->
-              <div class="rounded-xl bg-[#FFF5E0] border-l-4 border-[#D97706] p-3.5 text-xs sm:text-sm text-[#92400E] leading-relaxed">
-                <b>📋 Important Medical Note:</b> Seeking a qualified health professional is strongly recommended. TranslaNurse is for patient education and consultation guidance only, and is <b>not</b> intended to replace doctors or licensed health professionals.
+              <div class="rounded-xl bg-[#FFF6E5] border border-[#F59E0B] p-3.5 text-xs sm:text-sm text-[#92400E] leading-relaxed">
+                <b>📋 Important Medical Note:</b> Seeking a qualified health professional is strongly recommended. TranslaNurse is for non-commercial health literacy and consultation guidance only, and never replaces doctors.
               </div>
 
               <!-- Dynamic Explanation Body -->
-              <div class="bg-white rounded-xl p-4 border-l-4 border-tealMid shadow-sm">
+              <div class="bg-[#EEF6F8] rounded-xl p-4 border-l-4 border-tealMid shadow-sm">
                 <p id="square-body" class="text-slateDark text-sm sm:text-base leading-relaxed">
-                  Your instruction <b>"NPO after midnight"</b> means <b>nothing by mouth</b>. You must stop eating solid food and drinking liquids (including water) after 12:00 AM so your stomach stays completely empty and safe for your procedure.
+                  <b>Mild Thoracic Dextroscoliosis</b> means your upper-to-middle spine (thoracic area) curves gently to the <b>right side</b> (<i>dextro</i> = right, <i>scoliosis</i> = curve). Mild curves are very common, often harmless, and your heart and lungs remain clear and normal.
                 </p>
               </div>
 
-              <!-- Bottom Professional Recommendation & Export Bar -->
-              <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
-                <div class="text-xs font-semibold text-[#15803D] flex items-center gap-1.5">
-                  <span>👩‍⚕️ PROFESSIONAL RECOMMENDATION:</span>
-                  <span class="text-slateDark/80 font-normal">Verified for 8th-Grade Literacy</span>
+              <!-- Professional Recommendation Box -->
+              <div class="bg-[#F2F9F6] rounded-xl p-3.5 border-l-4 border-[#15803D]">
+                <div class="text-[11px] font-mono font-bold text-[#15803D] uppercase mb-1">
+                  👩‍⚕️ PROFESSIONAL RECOMMENDATION
                 </div>
+                <p class="text-xs sm:text-sm text-slateDark/80 italic">
+                  Seeking a licensed doctor or orthopedist is strongly recommended for posture guidance and physical assessment. Zero medications are prescribed by this tool.
+                </p>
+              </div>
+
+              <!-- Bottom Export & Verified Reference Bar -->
+              <div class="pt-1 flex flex-wrap items-center justify-between gap-2 border-t border-slateDark/10">
+                <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-600/30 font-mono text-[10px] font-bold text-emerald-800">
+                  ✓ NO WIKIPEDIA • NO SCRIBD • PEER-REVIEWED ONLY
+                </span>
                 <div class="flex items-center gap-2">
-                  <span class="px-3 py-1.5 rounded-lg bg-white border border-tealDeep/20 text-xs font-semibold text-slateDark">🖨️ Print Patient Guide</span>
-                  <span class="px-3 py-1.5 rounded-lg bg-white border border-tealDeep/20 text-xs font-semibold text-slateDark">📄 Save as TXT</span>
+                  <a href="https://czas-coding.github.io/translanurse/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-white border border-slateDark/20 text-xs font-semibold text-slateDark hover:bg-alabaster transition">🖨️ Print Editorial Guide</a>
+                  <a href="https://czas-coding.github.io/translanurse/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-white border border-slateDark/20 text-xs font-semibold text-slateDark hover:bg-alabaster transition">📄 Download (.TXT)</a>
                 </div>
               </div>
             </div>
@@ -722,250 +828,253 @@
     </section>
 
     <!-- ==========================================
-         SLIDE 05 / 08: BREAKING THE CULTURAL & LANGUAGE BARRIER
+         SLIDE 05 / 08: 10 PHILIPPINE + 7 ASIAN LANGUAGES (INTERACTIVE SWITCHER)
          ========================================== -->
-    <section id="slide-5" data-index="5" data-title="Cultural & Dialect Fluency" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
-      <div class="max-w-7xl mx-auto w-full my-auto py-8">
-        <!-- Header -->
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-4 mb-6">
-          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">05 / 08 // BREAKING CULTURAL &amp; LANGUAGE BARRIERS</span>
-          <span class="font-mono text-xs text-seafoamLight">PRIORITIZING PHILIPPINE REGIONAL FLUENCY</span>
+    <section id="slide-5" data-index="5" data-title="10 PH + 7 Asian Languages" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
+      <div class="max-w-7xl mx-auto w-full my-auto py-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-3.5 mb-6">
+          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">05 / 08 // SQUARES 05 &amp; 06: REGIONAL &amp; ASIAN FLUENCY</span>
+          <span class="font-mono text-xs text-seafoamLight">👆 CLICK ANY LANGUAGE PILL TO TRANSLATE LIVE</span>
         </div>
 
-        <div class="mb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+        <div class="mb-6 flex flex-col lg:flex-row lg:items-end justify-between gap-4">
           <div>
             <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
-              SPEAKING THE PATIENT'S <span class="text-coral">LANGUAGE—LITERALLY.</span>
+              10 PHILIPPINE DIALECTS <span class="text-coral">+ 7 ASIAN LANGUAGES.</span>
             </h2>
-            <p class="text-alabaster/80 text-base sm:text-lg mt-1">
-              Direct clinical translation into primary Philippine dialects so zero care instructions get lost in English-only sheets.
+            <p class="text-alabaster/80 text-sm sm:text-base mt-1">
+              Medical understanding should never depend on English fluency. Click any of the 10 Philippine languages below to preview bedside output:
             </p>
           </div>
-          <div class="px-4 py-2 rounded-full bg-white/10 border border-seafoam/40 font-mono text-xs text-seafoamLight shrink-0">
-            🌏 + 7 Additional Asian Languages Integrated
-          </div>
         </div>
 
-        <!-- 3 Hero Dialect Cards -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <!-- Priority 01: TAGALOG -->
-          <div class="rounded-3xl bg-gradient-to-b from-tealMid to-tealDeep border-2 border-seafoam p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-seafoam text-slateDark">PRIORITY 01 // NATIONAL</span>
-                <span class="font-mono text-xs text-seafoamLight">LUZON &amp; NCR</span>
-              </div>
-              <h3 class="font-display font-extrabold text-4xl text-white mb-2">Tagalog</h3>
-              <p class="text-seafoamLight text-sm mb-5">Natural, empathetic bedside conversational Tagalog.</p>
-
-              <div class="bg-slateDark/70 rounded-2xl p-4 border border-seafoam/30 space-y-1.5">
-                <span class="font-mono text-[10px] text-coral uppercase tracking-wider block">SAMPLE BEDSIDE OUTPUT:</span>
-                <p class="text-sm text-white italic leading-relaxed">
-                  "Huwag kumain o uminom ng tubig pagkalampas ng hatinggabi (NPO) upang manatiling ligtas ang iyong tiyan bago ang pagsusuri."
-                </p>
-              </div>
-            </div>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-seafoamLight">
-              <span>CULTURAL CONTEXT AUDIT: PASS</span>
-              <i class="fa-solid fa-circle-check text-seafoam"></i>
-            </div>
+        <!-- Interactive 10 Philippine Languages Selector Grid -->
+        <div class="bg-tealDeep/60 border border-seafoam/30 rounded-3xl p-6 sm:p-7 shadow-2xl mb-6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-bold text-seafoamLight uppercase tracking-wider">🇵🇭 SQUARE 05 // SELECT FROM 10 SUPPORTED PHILIPPINE LANGUAGES:</span>
+            <span id="active-region-tag" class="font-mono text-xs text-coral font-bold">LUZON &amp; NATIONAL CAPITAL REGION</span>
           </div>
 
-          <!-- Priority 02: CEBUANO / BISAYA -->
-          <div class="rounded-3xl bg-gradient-to-b from-[#164E56] to-slateDark border-2 border-coral p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-coral text-slateDark">PRIORITY 02 // VISMIN</span>
-                <span class="font-mono text-xs text-coral">VISAYAS &amp; MINDANAO</span>
-              </div>
-              <h3 class="font-display font-extrabold text-4xl text-white mb-2">Cebuano / Bisaya</h3>
-              <p class="text-alabaster/80 text-sm mb-5">Nuanced regional Visayan terms for symptom &amp; lab clarity.</p>
-
-              <div class="bg-slateDark/80 rounded-2xl p-4 border border-coral/30 space-y-1.5">
-                <span class="font-mono text-[10px] text-coral uppercase tracking-wider block">SAMPLE BEDSIDE OUTPUT:</span>
-                <p class="text-sm text-white italic leading-relaxed">
-                  "Ayaw pagkaon o pag-inom og tubig human sa tungang gabii (NPO) aron luwas ug walay sulod ang imong tiyan sa dili pa ang eksaminasyon."
-                </p>
-              </div>
-            </div>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-coral">
-              <span>REGIONAL DIALECT ENGINE: ACTIVE</span>
-              <i class="fa-solid fa-circle-check"></i>
-            </div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <button onclick="selectDialect(0)" class="dialect-pill active px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">01. Tagalog</button>
+            <button onclick="selectDialect(1)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">02. Cebuano (Bisaya)</button>
+            <button onclick="selectDialect(2)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">03. Ilocano</button>
+            <button onclick="selectDialect(3)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">04. Pangasinan</button>
+            <button onclick="selectDialect(4)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">05. Hiligaynon (Ilonggo)</button>
+            <button onclick="selectDialect(5)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">06. Chavacano</button>
+            <button onclick="selectDialect(6)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">07. Kapampangan</button>
+            <button onclick="selectDialect(7)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">08. Waray</button>
+            <button onclick="selectDialect(8)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">09. Bicolano</button>
+            <button onclick="selectDialect(9)" class="dialect-pill px-3.5 py-2 rounded-xl border border-seafoam/40 bg-slateDark/60 text-xs text-white transition">10. Maguindanaon</button>
           </div>
 
-          <!-- Priority 03: ILOCANO -->
-          <div class="rounded-3xl bg-gradient-to-b from-tealMid to-tealDeep border-2 border-seafoamLight/60 p-7 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-seafoamLight text-slateDark">PRIORITY 03 // NORTH</span>
-                <span class="font-mono text-xs text-seafoamLight">NORTHERN LUZON</span>
+          <!-- Dynamic Translation Preview Box -->
+          <div class="bg-slateDark/90 rounded-2xl p-5 border-l-4 border-coral flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span id="dialect-name-heading" class="font-display font-extrabold text-xl text-white">Tagalog Bedside Translation</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-seafoam/20 text-seafoamLight font-mono text-[10px] font-bold">VERIFIED CLINICAL GLOSSARY</span>
               </div>
-              <h3 class="font-display font-extrabold text-4xl text-white mb-2">Ilocano</h3>
-              <p class="text-seafoamLight text-sm mb-5">Trusted vernacular guidance for Northern Filipino families.</p>
-
-              <div class="bg-slateDark/70 rounded-2xl p-4 border border-seafoam/30 space-y-1.5">
-                <span class="font-mono text-[10px] text-coral uppercase tracking-wider block">SAMPLE BEDSIDE OUTPUT:</span>
-                <p class="text-sm text-white italic leading-relaxed">
-                  "Saan nga mangan wenno uminum ti danum kalpasan ti tengnga ti rabii (NPO) tapno natalged ti tianmo sakbay ti eksaminasion."
-                </p>
-              </div>
+              <p id="dialect-sample-text" class="text-base sm:text-lg text-seafoamLight italic leading-relaxed">
+                "Ang ibig sabihin ng NPO pagkalampas ng hatinggabi ay huwag kumain o uminom ng kahit tubig simula 12:00 AM upang manatiling ligtas ang iyong tiyan bago ang pagsusuri."
+              </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-seafoamLight">
-              <span>CULTURAL CONTEXT AUDIT: PASS</span>
-              <i class="fa-solid fa-circle-check text-seafoam"></i>
+            <div class="shrink-0 font-mono text-xs text-coral border border-coral/30 rounded-xl px-3.5 py-2 bg-coral/10">
+              ✓ Cultural Empathy Audit: PASS
             </div>
           </div>
         </div>
 
-        <!-- Demographic Precision Bar -->
+        <!-- Square 06: 7 Asian Languages Bar -->
         <div class="bg-white/5 border border-seafoam/25 rounded-2xl p-4 sm:px-6 flex flex-wrap items-center justify-between gap-3">
-          <span class="font-mono text-xs font-bold text-coral uppercase tracking-wider">SIMULTANEOUS DEMOGRAPHIC TUNING:</span>
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🌏</span>
+            <span class="font-mono text-xs font-bold text-coral uppercase tracking-wider">SQUARE 06 // + 7 ASIAN LANGUAGES INTEGRATED:</span>
+          </div>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">👥 General Public</span>
-            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">👴 Geriatric / Elderly Patient</span>
-            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🤝 Family Caregiver</span>
-            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🧸 Pediatric Parent / Guardian</span>
+            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🇯🇵 Japanese</span>
+            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🇰🇷 Korean</span>
+            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🇨🇳 Mandarin</span>
+            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🇻🇳 Vietnamese</span>
+            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🇹🇭 Thai</span>
+            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🇮🇩 Indonesian</span>
+            <span class="px-3 py-1 rounded-lg bg-tealDeep border border-seafoam/30 text-xs text-white font-medium">🇲🇾 Malay</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         SLIDE 06 / 08: BUILT FOR THE CARE TRIANGLE
+         SLIDE 06 / 08: 5-PILLAR CLINICAL SOURCING METHODOLOGY
          ========================================== -->
-    <section id="slide-6" data-index="6" data-title="The Care Triangle" class="slide-section aura-light editorial-grid-light text-slateDark px-6 sm:px-12 lg:px-20 pt-16">
-      <div class="max-w-7xl mx-auto w-full my-auto py-8">
-        <!-- Header -->
-        <div class="flex items-center justify-between border-b border-tealDeep/15 pb-4 mb-8">
-          <span class="font-mono text-xs font-bold tracking-widest text-tealMid uppercase">06 / 08 // TARGET DEMOGRAPHICS</span>
-          <span class="font-mono text-xs text-slateDark/60">EMPOWERING THE ENTIRE CARE TRIANGLE</span>
+    <section id="slide-6" data-index="6" data-title="5-Pillar Sourcing Methodology" class="slide-section aura-light editorial-grid-light text-slateDark px-6 sm:px-12 lg:px-20 pt-16">
+      <div class="max-w-7xl mx-auto w-full my-auto py-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-tealDeep/15 pb-3.5 mb-6">
+          <span class="font-mono text-xs font-bold tracking-widest text-tealMid uppercase">06 / 08 // 📚 5-PILLAR CLINICAL SOURCING METHODOLOGY</span>
+          <span class="font-mono text-xs text-slateDark/70 font-semibold">PEER-REVIEWED MEDICAL VERIFICATION</span>
         </div>
 
-        <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-slateDark tracking-tight mb-10">
-          DESIGNED FOR <span class="text-tealMid">EVERY SIDE OF THE BEDSIDE.</span>
-        </h2>
+        <div class="mb-6">
+          <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-slateDark tracking-tight">
+            5 TIERS OF <span class="text-tealMid">CLINICAL VERIFICATION.</span>
+          </h2>
+          <p class="text-slateDark/75 text-sm sm:text-base mt-1">
+            Every reference range, symptom explanation, and first-aid boundary in TranslaNurse is cross-verified against five tiers of peer-reviewed institutions:
+          </p>
+        </div>
 
-        <!-- 3 Tall Brutalist-Lite Columns -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Column 01 -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-tealDeep/10 shadow-xl flex flex-col justify-between hover:border-tealMid transition">
+        <!-- 5-Pillar Interactive Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+          <!-- Pillar 01 -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-tealDeep/10 shadow-lg hover:border-tealMid transition flex flex-col justify-between">
             <div>
-              <div class="flex items-center justify-between mb-6">
-                <span class="font-mono text-4xl font-extrabold text-tealMid">01</span>
-                <div class="w-12 h-12 rounded-2xl bg-seafoam/20 text-tealDeep flex items-center justify-center text-xl">
-                  <i class="fa-solid fa-hospital-user"></i>
-                </div>
-              </div>
-              <h3 class="font-display font-extrabold text-2xl text-slateDark mb-3">Patients &amp; Families</h3>
-              <p class="text-slateDark/80 text-base leading-relaxed mb-6">
-                Turns confusing lab portals, diagnostic scans, and discharge papers into calm, actionable next steps in their own native language.
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-tealDeep text-seafoamLight inline-block mb-3">PILLAR 01</span>
+              <h3 class="font-display font-extrabold text-base text-slateDark mb-2">Global &amp; Gov Health Authorities</h3>
+              <p class="text-xs text-slateDark/75 leading-relaxed">
+                World Health Organization (<b>WHO</b>), PH Department of Health (<b>DOH</b>) CPGs, U.S. <b>CDC</b>, and <b>NIH</b>.
               </p>
             </div>
-            <div class="pt-4 border-t border-tealDeep/10 font-mono text-xs text-tealMid font-bold">
-              ✓ ZERO ANXIETY COMPREHENSION
-            </div>
+            <div class="mt-4 pt-2 border-t border-slateDark/10 font-mono text-[10px] text-tealMid font-bold">PUBLIC HEALTH TIER</div>
           </div>
 
-          <!-- Column 02 -->
-          <div class="bg-slateDark text-white rounded-3xl p-8 border-2 border-tealMid shadow-2xl flex flex-col justify-between transform md:-translate-y-2">
+          <!-- Pillar 02 -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-tealDeep/10 shadow-lg hover:border-tealMid transition flex flex-col justify-between">
             <div>
-              <div class="flex items-center justify-between mb-6">
-                <span class="font-mono text-4xl font-extrabold text-coral">02</span>
-                <div class="w-12 h-12 rounded-2xl bg-coral/20 text-coral flex items-center justify-center text-xl">
-                  <i class="fa-solid fa-user-nurse"></i>
-                </div>
-              </div>
-              <h3 class="font-display font-extrabold text-2xl text-white mb-3">Bedside Nurses</h3>
-              <p class="text-alabaster/85 text-base leading-relaxed mb-6">
-                Cuts down discharge teaching time during busy shifts with instant, vetted educational guides, 1-click <code class="text-coral">Print Patient Guide</code>, and <code class="text-coral">Save as TXT</code>.
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-tealMid text-white inline-block mb-3">PILLAR 02</span>
+              <h3 class="font-display font-extrabold text-base text-slateDark mb-2">Elite Academic Medical Centers</h3>
+              <p class="text-xs text-slateDark/75 leading-relaxed">
+                <b>Mayo Clinic</b>, <b>Cleveland Clinic</b> Health Library, <b>Johns Hopkins</b> Medicine, and <b>Harvard Health</b>.
               </p>
             </div>
-            <div class="pt-4 border-t border-white/15 font-mono text-xs text-coral font-bold">
-              ✓ SAVES VALUABLE SHIFT MINUTES
-            </div>
+            <div class="mt-4 pt-2 border-t border-slateDark/10 font-mono text-[10px] text-tealMid font-bold">ACADEMIC TIER</div>
           </div>
 
-          <!-- Column 03 -->
-          <div class="bg-white rounded-3xl p-8 border-2 border-tealDeep/10 shadow-xl flex flex-col justify-between hover:border-tealMid transition">
+          <!-- Pillar 03 -->
+          <div class="bg-slateDark text-white rounded-2xl p-5 border-2 border-coral shadow-xl flex flex-col justify-between transform md:-translate-y-1">
             <div>
-              <div class="flex items-center justify-between mb-6">
-                <span class="font-mono text-4xl font-extrabold text-tealMid">03</span>
-                <div class="w-12 h-12 rounded-2xl bg-coral/25 text-slateDark flex items-center justify-center text-xl">
-                  <i class="fa-solid fa-hands-holding-child"></i>
-                </div>
-              </div>
-              <h3 class="font-display font-extrabold text-2xl text-slateDark mb-3">Home Caregivers</h3>
-              <p class="text-slateDark/80 text-base leading-relaxed mb-6">
-                Provides clear daily fluid/medication limits, red-flag warning signs, and direct emergency NCR hotlines when caring for elderly relatives.
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-coral text-slateDark inline-block mb-3">PILLAR 03</span>
+              <h3 class="font-display font-extrabold text-base text-white mb-2">Specialty Associations &amp; Manuals</h3>
+              <p class="text-xs text-alabaster/80 leading-relaxed">
+                <b>MSD Manuals</b>, American Heart Association (<b>AHA</b>), <b>ADA</b> (Diabetes), and <b>AAOS OrthoInfo</b>.
               </p>
             </div>
-            <div class="pt-4 border-t border-tealDeep/10 font-mono text-xs text-tealMid font-bold">
-              ✓ ACTIONABLE DAILY ROUTINES
-            </div>
+            <div class="mt-4 pt-2 border-t border-white/15 font-mono text-[10px] text-coral font-bold">SPECIALTY TIER</div>
           </div>
+
+          <!-- Pillar 04 -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-tealDeep/10 shadow-lg hover:border-tealMid transition flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-tealMid text-white inline-block mb-3">PILLAR 04</span>
+              <h3 class="font-display font-extrabold text-base text-slateDark mb-2">Lab Testing Directories</h3>
+              <p class="text-xs text-slateDark/75 leading-relaxed">
+                <b>MedlinePlus</b> (U.S. National Library of Medicine) and <b>Testing.com</b> (peer-reviewed by <b>ADLM</b>).
+              </p>
+            </div>
+            <div class="mt-4 pt-2 border-t border-slateDark/10 font-mono text-[10px] text-tealMid font-bold">DIAGNOSTIC LAB TIER</div>
+          </div>
+
+          <!-- Pillar 05 -->
+          <div class="bg-white rounded-2xl p-5 border-2 border-tealDeep/10 shadow-lg hover:border-tealMid transition flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-tealDeep text-seafoamLight inline-block mb-3">PILLAR 05</span>
+              <h3 class="font-display font-extrabold text-base text-slateDark mb-2">Point-of-Care Open Portals</h3>
+              <p class="text-xs text-slateDark/75 leading-relaxed">
+                <b>NCBI StatPearls</b> Clinical Reviews, <b>UpToDate</b> Patient Education, and <b>BMJ Best Practice</b> Leaflets.
+              </p>
+            </div>
+            <div class="mt-4 pt-2 border-t border-slateDark/10 font-mono text-[10px] text-tealMid font-bold">CLINICAL REVIEW TIER</div>
+          </div>
+        </div>
+
+        <!-- Strict Source Exclusion Policy Banner -->
+        <div class="rounded-2xl bg-[#FFF5E0] border-2 border-[#D97706] p-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-md">
+          <div class="text-xs sm:text-sm text-[#92400E] font-medium">
+            <strong class="font-extrabold uppercase">🚫 STRICT SOURCE EXCLUSION POLICY:</strong> TranslaNurse <b>never</b> cites or extracts medical guidance from Wikipedia, Scribd, unverified blogs, crowd-edited wikis, or commercial supplement portals.
+          </div>
+          <span class="px-3 py-1 rounded-full bg-[#92400E] text-white font-mono text-[10px] font-bold shrink-0">100% PEER-REVIEWED</span>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         SLIDE 07 / 08: CLINICAL GUARDRAILS & MITIGATION
+         SLIDE 07 / 08: ETHICAL GUARDRAILS, PRIVACY & FAQS
          ========================================== -->
-    <section id="slide-7" data-index="7" data-title="Safety Guardrails" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
-      <div class="max-w-7xl mx-auto w-full my-auto py-8">
-        <!-- Header -->
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-4 mb-8">
-          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">07 / 08 // KEY CHALLENGES &amp; MITIGATION</span>
-          <span class="font-mono text-xs text-seafoamLight">CLINICAL RISK ARCHITECTURE</span>
+    <section id="slide-7" data-index="7" data-title="Safety Guardrails & Privacy" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
+      <div class="max-w-7xl mx-auto w-full my-auto py-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-3.5 mb-6">
+          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">07 / 08 // ETHICAL GUARDRAILS &amp; CLINICAL FAQS</span>
+          <span class="font-mono text-xs text-seafoamLight">PATIENT SAFETY &amp; DATA PRIVACY ARCHITECTURE</span>
         </div>
 
-        <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-8">
-          SAFETY-FIRST <span class="text-seafoamLight">ARCHITECTURE.</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-6">
+          ZERO-MEDICATION &amp; <span class="text-seafoamLight">100% CLIENT-SIDE PRIVACY.</span>
         </h2>
 
-        <!-- 3 High-Contrast Risk -> Mitigation Rows -->
-        <div class="space-y-4">
-          <!-- Row 1 -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 bg-white/5 border border-seafoam/30 rounded-2xl overflow-hidden">
-            <div class="lg:col-span-5 p-6 bg-slateDark/80 border-b lg:border-b-0 lg:border-r border-seafoam/20">
-              <span class="font-mono text-xs font-bold text-coral uppercase">CHALLENGE 01 // OVERSIMPLIFICATION RISK</span>
-              <h3 class="font-display font-bold text-xl text-white mt-1">Stripping Vital Restrictions</h3>
-              <p class="text-alabaster/75 text-sm mt-1">Simplifying complex pathophysiology can accidentally omit critical clinical warnings.</p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <!-- Guardrail 1: Zero-Medication Rule -->
+          <div class="rounded-3xl bg-tealDeep/70 border-2 border-coral/50 p-6 flex flex-col justify-between shadow-xl">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-coral/20 text-coral flex items-center justify-center text-lg mb-4">
+                🛡️
+              </div>
+              <span class="font-mono text-[11px] font-bold text-coral uppercase">PROTOCOL 01 // PHARMACOLOGICAL SAFETY</span>
+              <h3 class="font-display font-extrabold text-xl text-white mt-1 mb-2">Zero-Medication Guardrail</h3>
+              <p class="text-alabaster/80 text-xs sm:text-sm leading-relaxed">
+                Why does TranslaNurse refuse to suggest medicines? Improper dosage or self-medicating can mask serious illness, trigger drug interactions, or cause organ injury. We provide strictly <b>non-pharmacological comfort measures</b> and route prescriptions to physicians.
+              </p>
             </div>
-            <div class="lg:col-span-7 p-6 flex flex-col justify-center bg-tealDeep/40">
-              <span class="font-mono text-xs font-bold text-seafoamLight uppercase">✓ TRANSLANURSE GUARDRAIL</span>
-              <h4 class="font-display font-bold text-lg sm:text-xl text-white mt-1">Adversarial Safety Auditor &amp; Red-Flag Square</h4>
-              <p class="text-alabaster/85 text-sm mt-1">Cross-checks contraindications, highlights dedicated "What You Feel &amp; Limits" red flags, and keeps nurse oversight in the loop.</p>
-            </div>
-          </div>
-
-          <!-- Row 2 -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 bg-white/5 border border-seafoam/30 rounded-2xl overflow-hidden">
-            <div class="lg:col-span-5 p-6 bg-slateDark/80 border-b lg:border-b-0 lg:border-r border-seafoam/20">
-              <span class="font-mono text-xs font-bold text-coral uppercase">CHALLENGE 02 // LIABILITY &amp; FALSE REASSURANCE</span>
-              <h3 class="font-display font-bold text-xl text-white mt-1">Assumed Self-Diagnosis</h3>
-              <p class="text-alabaster/75 text-sm mt-1">Patients may misinterpret an easy-to-read summary as a clean bill of health.</p>
-            </div>
-            <div class="lg:col-span-7 p-6 flex flex-col justify-center bg-tealDeep/40">
-              <span class="font-mono text-xs font-bold text-seafoamLight uppercase">✓ TRANSLANURSE GUARDRAIL</span>
-              <h4 class="font-display font-bold text-lg sm:text-xl text-white mt-1">Non-Dismissible Disclaimers &amp; Triage Banners</h4>
-              <p class="text-alabaster/85 text-sm mt-1">Color-coded triage headers (<code class="text-seafoamLight">Safe</code> vs. <code class="text-coral">Caution</code>) paired with mandatory amber physician-routing notes on every output.</p>
+            <div class="mt-4 pt-3 border-t border-white/10 font-mono text-[11px] text-coral font-bold">
+              ✓ ZERO DRUG RECOMMENDATIONS
             </div>
           </div>
 
-          <!-- Row 3 -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 bg-white/5 border border-seafoam/30 rounded-2xl overflow-hidden">
-            <div class="lg:col-span-5 p-6 bg-slateDark/80 border-b lg:border-b-0 lg:border-r border-seafoam/20">
-              <span class="font-mono text-xs font-bold text-coral uppercase">CHALLENGE 03 // CLINICAL ADOPTION FRICTION</span>
-              <h3 class="font-display font-bold text-xl text-white mt-1">Staff Software Fatigue</h3>
-              <p class="text-alabaster/75 text-sm mt-1">Hospital staff resist adopting cluttered, multi-step software during hectic shifts.</p>
+          <!-- Guardrail 2: 100% Client-Side Privacy -->
+          <div class="rounded-3xl bg-tealDeep/70 border-2 border-seafoam/40 p-6 flex flex-col justify-between shadow-xl">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-seafoam/20 text-seafoamLight flex items-center justify-center text-lg mb-4">
+                🔒
+              </div>
+              <span class="font-mono text-[11px] font-bold text-seafoamLight uppercase">PROTOCOL 02 // LOCAL BROWSER MEMORY</span>
+              <h3 class="font-display font-extrabold text-xl text-white mt-1 mb-2">100% Client-Side Privacy</h3>
+              <p class="text-alabaster/80 text-xs sm:text-sm leading-relaxed">
+                Where are lab results and queries stored? Strictly on the patient's own device via browser memory (<code class="text-seafoamLight">localStorage</code>). TranslaNurse operates with <b>zero tracking cookies, zero user profiling, and zero external commercial databases</b>.
+              </p>
             </div>
-            <div class="lg:col-span-7 p-6 flex flex-col justify-center bg-tealDeep/40">
-              <span class="font-mono text-xs font-bold text-seafoamLight uppercase">✓ TRANSLANURSE GUARDRAIL</span>
-              <h4 class="font-display font-bold text-lg sm:text-xl text-white mt-1">Zero-Friction Camera Scan &amp; 1-Click Print/TXT Export</h4>
-              <p class="text-alabaster/85 text-sm mt-1">Snap a lab sheet, click any of the 7 squares, and print or download discharge notes in seconds.</p>
+            <div class="mt-4 pt-3 border-t border-white/10 font-mono text-[11px] text-seafoamLight font-bold">
+              ✓ NEVER SOLD OR RETAINED ON SERVERS
             </div>
           </div>
+
+          <!-- Guardrail 3: Non-Diagnostic Triage & NCR Desk -->
+          <div class="rounded-3xl bg-tealDeep/70 border-2 border-sage/40 p-6 flex flex-col justify-between shadow-xl">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-sage/20 text-sage flex items-center justify-center text-lg mb-4">
+                🚨
+              </div>
+              <span class="font-mono text-[11px] font-bold text-sage uppercase">PROTOCOL 03 // BEDSIDE &amp; NCR TRIAGE</span>
+              <h3 class="font-display font-extrabold text-xl text-white mt-1 mb-2">Educational Triage &amp; Hotlines</h3>
+              <p class="text-alabaster/80 text-xs sm:text-sm leading-relaxed">
+                Cannot replace physical auscultation, palpation, or official radiology verdicts. Equips patients for productive doctor visits and integrates direct <b>Metro Manila (NCR) Emergency Hotlines (911 / 1555 DOH / 143 Red Cross)</b>.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 font-mono text-[11px] text-sage font-bold">
+              ✓ DIRECT PHYSICIAN &amp; HOTLINE ROUTING
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Compliance Bar -->
+        <div class="bg-slateDark/90 border border-seafoam/30 rounded-2xl p-4 sm:px-6 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-seafoamLight">
+            <span>🛡️ Zero-Medication Guardrail</span>
+            <span>•</span>
+            <span>📚 5-Pillar Verified Sources</span>
+            <span>•</span>
+            <span>🔒 100% Client-Side Privacy</span>
+          </div>
+          <button onclick="toggleHotkeyModal()" class="px-3.5 py-1.5 rounded-xl bg-coral/20 hover:bg-coral/30 border border-coral text-coral font-mono text-xs font-bold transition">
+            🚨 View NCR Emergency Hotlines
+          </button>
         </div>
       </div>
     </section>
@@ -974,17 +1083,16 @@
          SLIDE 08 / 08: LIVE DEMO & QR CODE
          ========================================== -->
     <section id="slide-8" data-index="8" data-title="Live Demo & QR Code" class="slide-section aura-dark editorial-grid-dark px-6 sm:px-12 lg:px-20 pt-16">
-      <div class="max-w-7xl mx-auto w-full my-auto py-8 flex flex-col justify-between">
-        <!-- Header -->
-        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-4 mb-8">
-          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">08 / 08 // TRY IT OUT LIVE</span>
-          <span class="font-mono text-xs text-seafoamLight">SCAN QR CODE OR LAUNCH DIRECTLY</span>
+      <div class="max-w-7xl mx-auto w-full my-auto py-6 flex flex-col justify-between">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-seafoam/25 pb-3.5 mb-6">
+          <span class="font-mono text-xs font-bold tracking-widest text-coral uppercase">08 / 08 // TRY TRANSLANURSE LIVE</span>
+          <span class="font-mono text-xs text-seafoamLight">METRO MANILA (NCR) • 911 / 1555 / 143</span>
         </div>
 
         <!-- Main Centerpiece -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center my-auto">
           <!-- Left Call to Action -->
-          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-coral/15 border border-coral/40 text-coral font-mono text-xs font-bold">
               <span>⚡ LIVE WEB APPLICATION READY</span>
             </div>
@@ -993,20 +1101,20 @@
               EXPERIENCE <span class="text-seafoamLight">TRANSLANURSE</span> LIVE.
             </h2>
 
-            <p class="text-lg sm:text-xl text-alabaster/85 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Scan the QR code with your phone camera to test the Clinical Consult &amp; Lab Scanner, explore the 7 Clickable Info Squares, and switch between Tagalog, Cebuano/Bisaya, and Ilocano.
+            <p class="text-base sm:text-lg text-alabaster/85 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Scan the QR code with your phone camera to test the <b>Multimodal Lab Scanner</b>, click through all <b>8 Clinical Guidance Squares</b>, and translate across <b>10 Philippine dialects</b> and <b>7 Asian languages</b>.
             </p>
 
-            <!-- URL Box + Interactive Buttons -->
+            <!-- Live URL Box + Copy & Open Buttons -->
             <div class="bg-slateDark/90 border border-seafoam/40 rounded-2xl p-3 sm:p-4 max-w-xl mx-auto lg:mx-0 flex flex-col sm:flex-row items-center justify-between gap-3">
               <code id="live-url-text" class="font-mono text-xs sm:text-sm text-seafoamLight break-all px-2">
-                https://czas-coding.github.io/thetranslanurse/
+                https://czas-coding.github.io/translanurse/
               </code>
               <div class="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-center">
                 <button onclick="copyLiveUrl()" id="copy-btn" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold transition flex items-center gap-2">
                   <i class="fa-regular fa-copy"></i> <span id="copy-btn-text">Copy URL</span>
                 </button>
-                <a href="https://czas-coding.github.io/thetranslanurse/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-coral hover:bg-coralDark text-slateDark font-mono text-xs font-bold transition flex items-center gap-2 shadow-lg">
+                <a href="https://czas-coding.github.io/translanurse/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-coral hover:bg-coralDark text-slateDark font-mono text-xs font-bold transition flex items-center gap-2 shadow-lg">
                   <span>Open App</span>
                   <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
@@ -1019,10 +1127,9 @@
             <div class="relative group">
               <div class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-coral via-seafoam to-tealMid opacity-50 blur-2xl group-hover:opacity-75 transition"></div>
               <div class="relative bg-white rounded-[2.2rem] p-6 sm:p-8 shadow-2xl border-4 border-white flex flex-col items-center">
-                <!-- QR Code Container with Centered TranslaNurse Emblem Overlay -->
-                <div class="relative w-[256px] h-[256px] flex items-center justify-center">
+                <div class="relative w-[248px] h-[248px] flex items-center justify-center">
                   <div id="qrcode-canvas" class="w-full h-full flex items-center justify-center"></div>
-                  <!-- Center Logo Badge Overlay (Matches User's Uploaded QR Image) -->
+                  <!-- Center TranslaNurse Logo Badge Overlay -->
                   <div class="absolute w-16 h-16 rounded-2xl bg-white p-1.5 shadow-md border border-slateDark/10 flex flex-col items-center justify-center pointer-events-none">
                     <svg viewBox="0 0 100 100" class="w-10 h-10">
                       <path d="M 75 20 A 42 42 0 1 0 75 82" fill="none" stroke="#48B5C4" stroke-width="6" stroke-linecap="round"/>
@@ -1043,12 +1150,17 @@
           </div>
         </div>
 
-        <!-- Thank You Footer -->
-        <div class="mt-10 pt-5 border-t border-seafoam/25 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div class="font-display font-extrabold text-lg text-white">
-            THANK YOU! <span class="text-coral mx-2">//</span> <span class="font-normal text-sm text-alabaster/80">Contreras • Driz • Marcelo • Ramos • Villabroza</span>
+        <!-- Thank You & Legal Footer -->
+        <div class="mt-8 pt-4 border-t border-seafoam/25 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div>
+            <div class="font-display font-extrabold text-base sm:text-lg text-white">
+              THANK YOU! <span class="text-coral mx-2">//</span> <span class="font-normal text-sm text-alabaster/80">Contreras • Driz • Marcelo • Ramos • Villabroza</span>
+            </div>
+            <div class="font-mono text-[10px] text-seafoamLight/70 mt-0.5">
+              © 2026 TranslaNurse Health Literacy Initiative • Mapúa University • NO WIKIPEDIA • NO SCRIBD • ZERO-MEDICATION SAFETY
+            </div>
           </div>
-          <button onclick="scrollToSlide(1)" class="font-mono text-xs text-seafoamLight hover:text-coral transition flex items-center gap-2">
+          <button onclick="scrollToSlide(1)" class="font-mono text-xs text-seafoamLight hover:text-coral transition flex items-center gap-2 shrink-0">
             <span>BACK TO TOP (SLIDE 01)</span>
             <i class="fa-solid fa-arrow-up"></i>
           </button>
@@ -1059,56 +1171,99 @@
   </main>
 
   <script>
-    // Data for the 7 Clickable Info Squares on Slide 4
+    // 1-Click Scenario Data for Slide 3 & 4
+    const scenarios = [
+      {
+        name: 'Dextroscoliosis & General Triage',
+        input: '"Chest X-Ray Report: Mild thoracic dextroscoliosis noted. Heart size is normal. Lungs are clear."',
+        meaning: '<b>Mild Thoracic Dextroscoliosis</b> means your upper-to-middle spine (thoracic area) curves gently to the <b>right side</b> (<i>dextro</i> = right, <i>scoliosis</i> = curve). Mild curves are very common, and your heart and lungs remain completely clear.'
+      },
+      {
+        name: 'Wrist Fall / Distal Radius Fracture',
+        input: '"I slipped and landed on my outstretched hand. My wrist is swollen and hurts when I rotate it."',
+        meaning: 'Swelling and pain after landing on an outstretched hand can indicate a <b>sprain or hairline wrist fracture (distal radius)</b>. Avoid bearing weight and keep the wrist immobilized in a neutral position until an X-ray rules out a fracture.'
+      },
+      {
+        name: 'High FBS (148 mg/dL) & Creatinine (1.5 mg/dL)',
+        input: '"Lab Panel: Fasting Blood Sugar (FBS) = 148 mg/dL (High) • Serum Creatinine = 1.5 mg/dL (Elevated)"',
+        meaning: 'Your <b>Fasting Blood Sugar (148 mg/dL)</b> is above the normal fasting range (70–99 mg/dL), and <b>Serum Creatinine (1.5 mg/dL)</b> shows your kidneys are working harder than usual to filter waste. Share both markers promptly with your physician.'
+      },
+      {
+        name: 'Elevated Blood Pressure (152/96 mmHg)',
+        input: '"Home BP Monitor Reading: 152/96 mmHg with mild tightness at the back of my neck."',
+        meaning: 'A reading of <b>152/96 mmHg</b> is elevated above the normal <120/80 mmHg target. Rest quietly for 5 minutes and re-check. Because you feel neck tightness, consult a physician and watch closely for red-flag symptoms.'
+      }
+    ];
+
+    function loadScenario(idx) {
+      const s = scenarios[idx];
+      if (!s) return;
+      document.querySelectorAll('.scenario-chip').forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+      document.getElementById('scenario-input-box').textContent = s.input;
+      document.getElementById('active-scenario-pill').textContent = `Active Case: ${s.name}`;
+      squareData[0].body = s.meaning;
+      selectSquare(0);
+    }
+
+    // Data for the 8 Clickable Info Squares on Slide 4
     const squareData = [
       {
         icon: '🩺',
         title: 'What Your Input / Situation Means',
-        tag: 'SQUARE 01 / 07 • OVERVIEW',
-        triage: 'Safe - Great Job in being healthy (Overview)',
-        body: 'Your instruction <b>"NPO after midnight"</b> is a standard routine preparation meaning <b>nothing by mouth</b>. Your stomach must stay completely empty so you remain safe while receiving sedatives or anesthesia during your procedure.'
+        tag: 'SQUARE 01 / 08 • OVERVIEW',
+        triage: 'Safe - Great Job in being healthy (Overview & Reference Ranges)',
+        body: '<b>Mild Thoracic Dextroscoliosis</b> means your upper-to-middle spine (thoracic area) curves gently to the <b>right side</b> (<i>dextro</i> = right, <i>scoliosis</i> = curve). Mild curves are very common, often harmless, and your heart and lungs remain clear and normal.'
       },
       {
         icon: '🔍',
         title: 'Why Safe / Unsafe (Clinical Triage)',
-        tag: 'SQUARE 02 / 07 • TRIAGE',
-        triage: 'Caution — Monitor Closely & Follow Routine Prep',
-        body: '<b>Why this matters:</b> Eating or drinking before a sedated procedure risks stomach contents entering the lungs. Following the midnight cutoff keeps your airway protected.'
+        tag: 'SQUARE 02 / 08 • TRIAGE',
+        triage: 'Routine Outpatient Follow-Up — Non-Emergency Finding',
+        body: '<b>Why this is stable:</b> Because the curve is graded as <b>mild</b> and your heart size and lung fields are clear, there is no compression on your breathing or circulation. Routine posture checkups with a physician are sufficient.'
       },
       {
         icon: '⚡',
         title: 'What You Feel & Red-Flag Limits',
-        tag: 'SQUARE 03 / 07 • RED FLAGS',
+        tag: 'SQUARE 03 / 08 • RED FLAGS',
         triage: 'Red-Flag Limits Identified — Check Thresholds',
-        body: '<b>Watch out for:</b> Severe dizziness, chest tightness, sudden 2–3 lb overnight weight gain, or shortness of breath when lying flat. Contact your attending physician immediately if any appear.'
+        body: '<b>Watch out for:</b> Numbness or tingling radiating down your arms/legs, new shortness of breath, uneven rib prominence, or severe back pain that wakes you from sleep. Seek immediate medical evaluation if any appear.'
       },
       {
         icon: '🛡️',
         title: 'What Can I Do? (First Aid & NCR Hotlines)',
-        tag: 'SQUARE 04 / 07 • ACTION PLAN',
-        triage: 'Actionable Bedside & Home Checklist Ready',
-        body: '1. Stop all solid food and water at 12:00 AM.<br>2. Ask your doctor if morning maintenance pills can be taken with one tiny sip of water.<br>3. <b>Emergency PH / NCR Hotline:</b> Dial <b>911</b> or <b>143 (Philippine Red Cross)</b> for urgent distress.'
+        tag: 'SQUARE 04 / 08 • FIRST AID & NCR',
+        triage: 'Non-Pharmacological Comfort & NCR Emergency Directory',
+        body: '1. Practice ergonomic sitting posture and avoid heavy one-shoulder bags.<br>2. Apply gentle warm compresses for muscle tension (<b>Zero-Medication Guardrail:</b> consult your doctor before taking pain relievers).<br>3. <b>NCR Hotlines:</b> Dial <b>911</b>, <b>1555 (DOH)</b>, or <b>143 (Red Cross)</b> for acute distress.'
+      },
+      {
+        icon: '🇵🇭',
+        title: 'Philippine Languages (10 Regional Dialects)',
+        tag: 'SQUARE 05 / 08 • 10 PH DIALECTS',
+        triage: '10 Philippine Regional Languages Ready',
+        body: '<b>Tagalog:</b> Ang mild thoracic dextroscoliosis ay bahagyang pagkurba ng iyong gulugod pakanan. Ligtas at malinaw ang iyong baga at puso.<br><b>Cebuano:</b> Ang mild dextroscoliosis nagpasabot nga medyo nagkurba sa tuo ang imong bukobuko.<br><b>Ilocano:</b> Naannayas a panagkillok ti duri agturong iti makannawan.'
       },
       {
         icon: '🌏',
-        title: '10 Asian Languages (Tagalog, Cebuano, Ilocano + 7)',
-        tag: 'SQUARE 05 / 07 • DIALECT FLUENCY',
-        triage: 'Culturally Fluent Translation Active',
-        body: '<b>Tagalog:</b> Huwag kumain o uminom pagkalampas ng hatinggabi.<br><b>Cebuano/Bisaya:</b> Ayaw pagkaon o pag-inom human sa tungang gabii.<br><b>Ilocano:</b> Saan nga mangan wenno uminum kalpasan ti tengnga ti rabii.'
+        title: 'Other Asian Countries (7 Asian Languages)',
+        tag: 'SQUARE 06 / 08 • 7 ASIAN LANGS',
+        triage: 'Cross-Border Asian Health Literacy Active',
+        body: '<b>Japanese:</b> 軽度の胸椎右側弯症（背骨がわずかに右へカーブしています）。<br><b>Korean:</b> 경미한 흉추 우측 척추측만증 (척추가 오른쪽으로 살짝 휘어짐).<br><b>Mandarin:</b> 轻度胸椎右凸（脊柱轻微向右弯曲，心肺正常）。'
       },
       {
         icon: '🧸',
         title: 'Kid-Friendly Analogy (Simple Story)',
-        tag: 'SQUARE 06 / 07 • SIMPLE STORY',
-        triage: 'Pediatric & Low-Literacy Analogy Mode',
-        body: 'Imagine your heart is a sponge with a tired squeeze. When it cannot squeeze all the water out, puddles back up into your lungs and feet—so we use special "sponge-helper" medicine to flush extra water out!'
+        tag: 'SQUARE 07 / 08 • SIMPLE STORY',
+        triage: 'Pediatric & Low-Literacy Story Mode',
+        body: 'Think of your spine like a tall stack of building blocks. Instead of standing in a super straight line, the middle blocks lean slightly to the right like a gentle tree branch in the breeze—still strong and holding you up safely!'
       },
       {
         icon: '📖',
         title: 'Jargon Breakdown & Clinical Safety Audit',
-        tag: 'SQUARE 07 / 07 • DICTIONARY',
-        triage: 'Adversarial Clinical Safety Audit: Verified',
-        body: '<b>• NPO (Nil Per Os):</b> Nothing by mouth.<br><b>• Edema:</b> Swelling caused by excess fluid trapped in body tissues.<br><b>• Diuretic:</b> Medicine ("water pill") that helps kidneys release extra sodium and water.'
+        tag: 'SQUARE 08 / 08 • DICTIONARY',
+        triage: '5-Pillar Peer-Reviewed Audit: PASS',
+        body: '<b>• Thoracic:</b> Upper and middle back region attached to the ribcage.<br><b>• Dextro-:</b> Medical prefix meaning "to the right."<br><b>• Scoliosis:</b> Sideways curvature of the spine.<br><b>• Verified Sources:</b> AAOS OrthoInfo, MedlinePlus (NLM), Mayo Clinic.'
       }
     ];
 
@@ -1116,21 +1271,85 @@
       const item = squareData[index];
       if (!item) return;
 
-      // Update active button state
       const buttons = document.querySelectorAll('.info-square-btn');
       buttons.forEach((btn, i) => {
-        if (i === index) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+        btn.classList.toggle('active', i === index);
       });
 
-      // Update display content
       document.getElementById('square-heading').innerHTML = `<span>${item.icon}</span> <span>${item.title}</span>`;
       document.getElementById('square-tag').textContent = item.tag;
       document.getElementById('square-body').innerHTML = item.body;
       document.getElementById('demo-triage-title').textContent = item.triage;
+    }
+
+    // 10 Philippine Languages Interactive Data for Slide 5
+    const dialectData = [
+      {
+        name: 'Tagalog Bedside Translation',
+        region: 'LUZON & NATIONAL CAPITAL REGION (NCR)',
+        text: '"Ang ibig sabihin ng NPO pagkalampas ng hatinggabi ay huwag kumain o uminom ng kahit tubig simula 12:00 AM upang manatiling ligtas ang iyong tiyan bago ang pagsusuri."'
+      },
+      {
+        name: 'Cebuano (Bisaya) Bedside Translation',
+        region: 'CENTRAL VISAYAS & MINDANAO',
+        text: '"Ayaw pagkaon o pag-inom og bisan tubig human sa tungang gabii (NPO) aron luwas ug walay sulod ang imong tiyan sa dili pa ang eksaminasyon."'
+      },
+      {
+        name: 'Ilocano Bedside Translation',
+        region: 'NORTHERN LUZON & CORDILLERA',
+        text: '"Saan nga mangan wenno uminum ti danum kalpasan ti tengnga ti rabii (NPO) tapno natalged ti tianmo sakbay ti eksaminasion."'
+      },
+      {
+        name: 'Pangasinan / Pangasinense Translation',
+        region: 'PANGASINAN & ILOCOS REGION',
+        text: '"Agka mangan o oninum na danum kayari pegley na labi (NPO) pian maligen so eges mo antis na eksaminasyon."'
+      },
+      {
+        name: 'Hiligaynon (Ilonggo) Translation',
+        region: 'WESTERN VISAYAS (ILOILO & NEGROS)',
+        text: '"Indi magkaon ukon mag-inom sang tubig pagkatapos sang tungang gab-i (NPO) agud mangin luwas ang imo tiyan antes ang pagtilaw."'
+      },
+      {
+        name: 'Chavacano Bedside Translation',
+        region: 'ZAMBOANGA PENINSULA & CAVITE',
+        text: '"No mas come o toma agua despues de media noche (NPO) para queda seguro el barriga antes del examinacion."'
+      },
+      {
+        name: 'Kapampangan Bedside Translation',
+        region: 'CENTRAL LUZON (PAMPANGA & TARLAC)',
+        text: '"E ka mamangan o miminum danum kaybat ning kapitung bengi (NPO) ban kanita ligtas ya ing atyan mu bayu ing pamagsuri."'
+      },
+      {
+        name: 'Waray Bedside Translation',
+        region: 'EASTERN VISAYAS (SAMAR & LEYTE)',
+        text: '"Ayaw pagkaon o pag-inom hin tubig kahuman han katutnga (NPO) para maging talwas an imo tiyan san-o an eksaminasyon."'
+      },
+      {
+        name: 'Bicolano Bedside Translation',
+        region: 'BICOL REGION (SOUTHERN LUZON)',
+        text: '"Dai magkakan o mag-inom nin tubig pagkalihis nin matangang banggi (NPO) tanganing ligtas an saimong tulak bago an eksaminasyon."'
+      },
+      {
+        name: 'Maguindanaon Bedside Translation',
+        region: 'CENTRAL & BANGSAMORO MINDANAO',
+        text: '"Di ka pegkan o peginum sa ig liyo nu tunga na magabi (NPO) endo malinding su tiyan nengka unan nu kapeg-eksamin."'
+      }
+    ];
+
+    function selectDialect(idx) {
+      const d = dialectData[idx];
+      if (!d) return;
+      document.querySelectorAll('.dialect-pill').forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+      document.getElementById('dialect-name-heading').textContent = d.name;
+      document.getElementById('active-region-tag').textContent = d.region;
+      document.getElementById('dialect-sample-text').textContent = d.text;
+    }
+
+    function toggleHotkeyModal() {
+      const modal = document.getElementById('ncr-modal');
+      modal.classList.toggle('hidden');
     }
 
     // Track current slide via IntersectionObserver
@@ -1205,9 +1424,9 @@
       }
     });
 
-    // Copy Live URL helper using fallback-friendly clipboard copy
+    // Copy Live URL helper
     function copyLiveUrl() {
-      const url = 'https://czas-coding.github.io/thetranslanurse/';
+      const url = 'https://czas-coding.github.io/translanurse/';
       const tempInput = document.createElement('textarea');
       tempInput.value = url;
       document.body.appendChild(tempInput);
@@ -1225,14 +1444,14 @@
       document.body.removeChild(tempInput);
     }
 
-    // Generate Scannable QR Code for https://czas-coding.github.io/thetranslanurse/
+    // Generate Scannable QR Code for https://czas-coding.github.io/translanurse/
     window.addEventListener('DOMContentLoaded', () => {
       const qrContainer = document.getElementById('qrcode-canvas');
       if (qrContainer && typeof QRCode !== 'undefined') {
         new QRCode(qrContainer, {
-          text: 'https://czas-coding.github.io/thetranslanurse/',
-          width: 240,
-          height: 240,
+          text: 'https://czas-coding.github.io/translanurse/',
+          width: 232,
+          height: 232,
           colorDark: '#052629',
           colorLight: '#ffffff',
           correctLevel: QRCode.CorrectLevel.H
